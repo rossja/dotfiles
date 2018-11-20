@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/json/Documents/src/git/devops/.git'
+let g:netrw_dirhist_2='/Users/json/Documents/src/cptc/2017/gitea-repos/reggie/.git'
+let g:netrw_dirhist_3='/Users/json/Documents/dotfiles/config/fish'
+let g:netrw_dirhist_4='/Users/json/src/adjs/router/routes/api/v1.0.0'
+let g:netrw_dirhist_5='/Users/json/Documents/dotfiles/config/fish'
+let g:netrw_dirhist_6='/Users/json/tmp/t'

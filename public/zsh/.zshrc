@@ -1,4 +1,77 @@
 # ==================================================
+# set locale
+# ==================================================
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# set zsh home to oh-my-zsh if it's installed
+[[ -d $HOME/.oh-my-zsh ]] && export ZSH="$HOME/.oh-my-zsh"
+
+# ==================================================
+# General Config
+# ==================================================
+
+# default editor
+export EDITOR="vim"
+
+# source aliases if one exists
+[[ -f ~/.aliases.zsh ]] && . ~/.aliases.zsh
+
+# set the function path
+fpath=( "$HOME/.zsh.d" "${fpath[@]}" )
+
+# get the homebrew zsh completions for hub
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+fi
+
+# autoload functions
+autoload docker-killall docker-rmstale docker-rmvols
+
+# ==================================================
+# set up PATH
+# ==================================================
+# all your base...
+export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin"
+
+# coreutils
+if [ -d /usr/local/opt/coreutils ]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+
+# ==================================================
+# dev opts
+# ==================================================
+# golang
+if [ -d /usr/local/opt/go/ ]; then
+    export PATH=$PATH:/usr/local/opt/go/libexec/bin
+    export GOROOT=/usr/local/opt/go/libexec/
+fi
+export GOPATH="$HOME/src/go"
+[[ -d $GOPATH ]] && export PATH=$GOPATH/bin:$PATH
+
+# prefer gnu getopt
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+# ==================================================
+# Compiler Settings
+# ==================================================
+export ARCHFLAGS="-arch x86_64"
+
+# set openssl first (over Apple's TLS libs)
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+# ==================================================
+# my own bin uber alles
+# ==================================================
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+
+
+# ==================================================
+# Prompt Magic
 # THIS SHELL'S POWER IS > 9000!
 # ==================================================
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -105,24 +178,3 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# ==================================================
-# General Config
-# ==================================================
-
-# default editor
-export EDITOR="vim"
-
-# source aliases if one exists
-[[ -f ~/.aliases.zsh ]] && . ~/.aliases.zsh
-
-# set the function path
-fpath=( "$HOME/.zsh.d" "${fpath[@]}" )
-
-# get the homebrew zsh completions for hub
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
-fi
-
-# autoload functions
-autoload docker-killall docker-rmstale docker-rmvols

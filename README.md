@@ -31,7 +31,6 @@ This is a collection of configuration files I find handy
        - Set New profile as default
 1. Link the zsh configurations:
     - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshenv $HOME/.zshenv`
     - `ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d`
 1. Close terminal, start iterm2
 1. Enjoy the awesome!

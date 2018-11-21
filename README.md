@@ -22,6 +22,8 @@ This is a collection of configuration files I find handy
                 * Set 'Working Directory' to 'Reuse previous session's directory'
             1. Colors
                 * Set Color Theme to whatever you like. I prefer 'Misterioso' theme
+                * Set Cursor color to white
+                * Set Cursor text color to black
             1. Text
                 * Change font to powerline-enabled font *('Hack Nerd Font' is in the bundle)*
             1. Terminal

@@ -32,4 +32,5 @@ This is a collection of configuration files I find handy
 1. Close terminal, start iterm2
 1. Enjoy the awesome!
 
-![screenshot of the zsh configuration described above](images/screenshot.png?raw=true "a handy screenshot")
+![screenshot of the zsh configuration described above](images/screenshot-iterm2-misterioso.png?raw=true "a handy screenshot")
+![screenshot of the same config on the system terminal, using the Pro theme](images/screenshot-terminal-pro.png?raw=true "another handy screenshot")

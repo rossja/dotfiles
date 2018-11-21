@@ -31,3 +31,5 @@ This is a collection of configuration files I find handy
        - Set New profile as default
 1. Close terminal, start iterm2
 1. Enjoy the awesome!
+
+![screenshot of the zsh configuration described above](images/screenshot.png?raw=true "a handy screenshot")

@@ -162,7 +162,18 @@
         "afterColon": true
       }
     ],
-    "new-cap": 2,
+    "new-cap": [
+      2,
+      {
+        "newIsCap": true,
+        "capIsNew": false,
+        "newIsCapExceptions": [],
+        "newIsCapExceptionPattern": [],
+        "capIsNewExceptions": [],
+        "capIsNewExceptionPattern": [],
+        "properties": true
+      }
+    ],
     "new-parens": 2,
     "newline-after-var": [
       1,

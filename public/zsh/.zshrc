@@ -11,6 +11,9 @@ export LC_ALL=en_US.UTF-8
 # General Config
 # ==================================================
 
+# kill the inverse % on non-terminated end of line
+export PROMPT_EOL_MARK=""
+
 # default editor
 export EDITOR="vim"
 

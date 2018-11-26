@@ -1,5 +1,5 @@
 # ls
-alias ls='gls --color=auto' # requires coreutils on mac osx
+#alias ls='gls --color=auto' # requires coreutils on mac osx
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -17,3 +17,6 @@ alias edit='/usr/local/bin/code-insiders'
 # handy for getting to the dotfiles dirs quickly
 alias cdf='cd $HOME/Documents/dotfiles'
 alias cdfp='cd $HOME/Documents/dotfiles/public'
+
+# git fun
+alias yolo='git commit -a -m "$(curl -s https://whatthecommit.com/index.txt)"'

@@ -11,6 +11,9 @@ export LC_ALL=en_US.UTF-8
 # General Config
 # ==================================================
 
+# kill the inverse % on non-terminated end of line
+export PROMPT_EOL_MARK=""
+
 # default editor
 export EDITOR="vim"
 
@@ -39,6 +42,9 @@ if [ -d /usr/local/opt/coreutils ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
+
+# typora on linux
+[[ -d /usr/share/typora/Typora ]] && export PATH="/usr/share/typora/Typora:$PATH"
 
 # ==================================================
 # dev opts

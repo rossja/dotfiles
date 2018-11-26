@@ -43,6 +43,9 @@ if [ -d /usr/local/opt/coreutils ]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
+# typora on linux
+[[ -d /usr/share/typora/Typora ]] && export PATH="/usr/share/typora/Typora:$PATH"
+
 # ==================================================
 # dev opts
 # ==================================================

@@ -2,7 +2,9 @@
 
 This is a collection of configuration files I find handy
 
-## Cool ZSH prompt: Zero to Eleven (on Mac OS X)
+## Cool ZSH prompt: Zero to Eleven
+
+### on Mac OS X
 
 1. Install dev tools: `xcode-select --install`
 1. Install homebrew: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -32,6 +34,8 @@ This is a collection of configuration files I find handy
 1. Link the zsh configurations:
     - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc`
     - `ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d`
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh`
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh`
 1. Close terminal, start iterm2
 1. Enjoy the awesome!
 
@@ -40,3 +44,24 @@ This is a collection of configuration files I find handy
 
 **A screenshot of the same config on the system terminal, using the Pro theme**
 ![screenshot of the same config on the system terminal, using the Pro theme](images/screenshot-terminal-pro.png?raw=true "another handy screenshot")
+
+
+
+
+
+### on Linux (Ubuntu/Debian Based)
+
+1. Install dev tools: `apt-get install git`
+1. Clone this repo: `git clone "https://github.com/rossja/dotfiles.git" "$HOME/Documents/dotfiles"`
+1. Install the desired fonts from `$HOME/Documents/dotfiles/public/fonts`
+1. Configure your terminal to use the desired font
+1. Link the zsh configurations:
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc`
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d`
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh`
+    - `ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh`
+1. Restart terminal
+1. Enjoy the awesome!
+
+**A screenshot of the zsh configuration described above, on Kali Linux (KDE version)**
+![screenshot of the zsh configuration described above on Kali Linux using Konsole](images/screenshot-linux-konsole.png?raw=true "a handy screenshot")

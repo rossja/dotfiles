@@ -19,7 +19,8 @@ alias cdf='cd $HOME/Documents/dotfiles'
 alias cdfp='cd $HOME/Documents/dotfiles/public'
 
 # git fun
-alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)"'
+alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)" && git push'
 
 # docker stuff I find useful
-alias vault="docker exec -it $(docker ps|awk '/vault server/ {print $1}') vault"
+alias vault="docker exec -i $(docker ps|awk '/vault server/ {print $1}') vault"
+alias file2vault="cat $1| vault kv put $2 value=-"

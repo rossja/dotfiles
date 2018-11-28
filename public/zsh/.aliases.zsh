@@ -36,9 +36,11 @@ alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)" && git push'
 # -------------------------------------------------
 # docker stuff I find useful
 # -------------------------------------------------
+
 # vault things
-alias vault="docker exec -i $(docker ps|awk '/vault server/ {print $1}') vault"
-alias file2vault="cat $1| vault kv put $2 value=-"
+alias vault="docker exec -i $(docker ps|awk '/vault:latest/ {print $1}') vault"
+alias openvault="vault operator unseal $Unseal_Key_1; vault operator unseal $Unseal_Key_2; vault operator unseal $Unseal_Key_3"
+alias file2vault="cat $1| vault kv put $2 value=-" # arg1=filepath  arg2=vaultpath
 
 # use app-specific mongo
 alias amongo="mongo -u $appDbUser -p appDbPass $appDbName"

@@ -29,13 +29,15 @@ if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
 fi
 
 # autoload functions
-autoload docker-killall docker-rmstale docker-rmvols
+# don't need these now that I discovered `docker system prune --volumes`
+#autoload docker-killall docker-rmstale docker-rmvols
 
 # ==================================================
 # set up PATH
 # ==================================================
 # all your base...
-export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin"
+# /usr/local/[bin|sbin] comes first to prefer homebrew apps over mac defaults
+export PATH="/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
 
 # coreutils
 if [ -d /usr/local/opt/coreutils ]; then
@@ -49,13 +51,25 @@ fi
 # ==================================================
 # dev opts
 # ==================================================
+
 # golang
 if [ -d /usr/local/opt/go/ ]; then
-    export PATH=$PATH:/usr/local/opt/go/libexec/bin
-    export GOROOT=/usr/local/opt/go/libexec/
+    export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+    export GOROOT="/usr/local/opt/go/libexec/"
 fi
 export GOPATH="$HOME/src/go"
-[[ -d $GOPATH ]] && export PATH=$GOPATH/bin:$PATH
+[[ -d $GOPATH ]] && export PATH="$GOPATH/bin:$PATH"
+
+# python virtualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export PROJECT_HOME="$HOME/src/py"
+    export VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
+    source "/usr/local/bin/virtualenvwrapper_lazy.sh"
+fi
+
+# add python2 bin to the path
+[[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 # prefer gnu getopt
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
@@ -167,7 +181,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE="true"
 POWERLEVEL9K_RPROMPT_ON_NEWLINE="false"
 
 # set the prompt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context newline dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 
 
@@ -176,8 +190,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 # ==================================================
 plugins=(
   dotenv
-  git
-  github
   jsontools
   osx
   sudo

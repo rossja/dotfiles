@@ -29,8 +29,10 @@ if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
 fi
 
 # autoload functions
-# don't need these now that I discovered `docker system prune --volumes`
-#autoload docker-killall docker-rmstale docker-rmvols
+# don't need these as much now that I discovered the
+# magic of`docker system prune --volumes`, but still
+# are occasionally handy to have
+autoload docker-killall docker-rmstale docker-rmvols
 
 # ==================================================
 # set up PATH

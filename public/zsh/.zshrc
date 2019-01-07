@@ -76,6 +76,13 @@ fi
 # prefer gnu getopt
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
+# prefer brew mysql
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
+export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig"
+
+
 # ==================================================
 # Compiler Settings
 # ==================================================

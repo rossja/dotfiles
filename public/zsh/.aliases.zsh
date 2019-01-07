@@ -44,5 +44,8 @@ alias file2vault="cat $1| vault kv put $2 value=-" # arg1=filepath  arg2=vaultpa
 alias cip="docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}'" # pass in a container ID to get the IP for it
 alias cips="docker ps -q |xargs docker inspect --format '{{.Name}} : {{range .NetworkSettings.Networks}}{{.IPAddress}}, {{end}}'" # get all the IPs for every container
 
+# easy-rsa
+alias easy-rsa="docker run --rm -it -v $HOME/src/pki:/pki tonymke/easy-rsa"
+
 # use app-specific mongo
 alias amongo="mongo -u $appDbUser -p appDbPass $appDbName"

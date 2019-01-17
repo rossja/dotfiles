@@ -76,12 +76,23 @@ fi
 # prefer gnu getopt
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
+# prefer gnu readline
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+
 # prefer brew mysql
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
 export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
 export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig"
 
+
+# prefer brew sqlite
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="-I/usr/local/opt/sqlite/include"
+export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
 
 # ==================================================
 # Compiler Settings

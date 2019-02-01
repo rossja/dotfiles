@@ -1,0 +1,8 @@
+#!/bin/bash
+# ------------------------------------------
+# a simple script to parse out services from
+# the nmap greppable output file.
+# ------------------------------------------
+port=$1
+awk '/'$port'\/open/ {print $2}' \
+../../nmap/output/initial_scan.gnmap >servers.txt

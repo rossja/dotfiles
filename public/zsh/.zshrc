@@ -116,7 +116,9 @@ export ARCHFLAGS="-arch x86_64"
 # ==================================================
 # my own bin uber alles
 # ==================================================
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/Documents/bin" ]] && export PATH="$HOME/Documents/bin:$PATH"
+[[ -d "$HOME/Documents/dotfiles/public/bin" ]] && export PATH="$HOME/Documents/dotfiles/public/bin:$PATH"
+[[ -d "$HOME/Documents/dotfiles/private/bin" ]] && export PATH="$HOME/Documents/dotfiles/private/bin:$PATH"
 
 
 # ==================================================

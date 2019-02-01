@@ -1,0 +1,3 @@
+#!/bin/bash
+#docker ps -aq -f status=exited
+docker ps -aq --no-trunc | xargs docker rm

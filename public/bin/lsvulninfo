@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FILE=$2
+
+case "$1" in
+  title)
+    echo "Vuln List:"
+    egrep ^"\# \\[" ${FILE} |sort -n
+    echo;
+  ;;
+  info)
+    echo "Unsorted, with host info:"
+    egrep ^\# ${FILE}
+    echo;
+  ;;
+  *)
+    echo "usage: lsvulninfo [title | info]"
+  ;;
+esac

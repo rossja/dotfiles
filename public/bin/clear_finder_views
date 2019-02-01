@@ -1,0 +1,4 @@
+#!/bin/bash
+# after running this, open finder and set the view how you want
+# set it as the default view, and all future views will be set properly
+sudo find / -name ".DS_Store"  -exec rm {} \;

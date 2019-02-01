@@ -1,0 +1,3 @@
+#!/bin/bash
+# finds open ports out of nmap scan output
+cat *.nmap | grep open | cut -d"/" -f1 | sort -n | uniq | grep -vi [a-z] | tr '\n' ','

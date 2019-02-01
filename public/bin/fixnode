@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# if you get the following error on mac osx:
+# Cannot find module '../lib/utils/unsupported.js'
+# this script can help fix that
+
+sudo rm -rf /usr/local/lib/node_modules/npm
+brew reinstall node

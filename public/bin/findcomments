@@ -1,0 +1,2 @@
+#!/bin/bash
+egrep -r "\/\*|^\/\/|\s\/\/|\<\!" * |grep -v Binary

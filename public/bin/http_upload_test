@@ -1,0 +1,10 @@
+#!/bin/bash
+HOSTFILE='./servers.txt'
+
+for i in `cat ${HOSTFILE}`; do
+  echo
+  echo
+  echo ${i}
+  echo
+  curl -k -T ig_jross.txt https://${i}/
+done

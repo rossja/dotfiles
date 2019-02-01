@@ -1,0 +1,3 @@
+#!/bin/bash
+# adds a remote upstream for syncing forks
+git remote add upstream $1

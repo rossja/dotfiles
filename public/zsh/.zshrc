@@ -50,6 +50,8 @@ fi
 # typora on linux
 [[ -d /usr/share/typora/Typora ]] && export PATH="/usr/share/typora/Typora:$PATH"
 
+# bladeRF default location
+[[ -d /opt/local/bin/ ]] && export PATH="/opt/local/bin/:$PATH"
 # ==================================================
 # dev opts
 # ==================================================
@@ -77,32 +79,39 @@ fi
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 # prefer gnu readline
-export LDFLAGS="-L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/readline/include"
-export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/readline/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/readline/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # prefer brew mysql
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
-export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/mysql-client/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/mysql-client/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 
 # prefer brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/sqlite/lib"
-export CPPFLAGS="-I/usr/local/opt/sqlite/include"
-export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 
+# prefer brew openblas
+
+export LDFLAGS="-L/usr/local/opt/openblas/lib"
+export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# prefer openssl (over Apple's TLS libs)
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+#
 # ==================================================
 # Compiler Settings
 # ==================================================
 export ARCHFLAGS="-arch x86_64"
 
-# set openssl first (over Apple's TLS libs)
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 # ==================================================
 # my own bin uber alles

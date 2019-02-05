@@ -34,6 +34,14 @@ alias cdfp='cd $HOME/Documents/dotfiles/public'
 alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)" && git push'
 
 # -------------------------------------------------
+# I hate typing
+# -------------------------------------------------
+alias cdc="cd $CLIENT_WORK_DIR"
+alias cdcd="cd $CLIENT_WORK_DIR/docs"
+alias cdct="cd $CLIENT_WORK_DIR/testing"
+alias cdcs="cd $CLIENT_WORK_DIR/src"
+
+# -------------------------------------------------
 # docker stuff I find useful
 # -------------------------------------------------
 
@@ -49,3 +57,6 @@ alias easy-rsa="docker run --rm -it -v $HOME/src/pki:/pki tonymke/easy-rsa"
 
 # use app-specific mongo
 alias amongo="mongo -u $appDbUser -p appDbPass $appDbName"
+
+# bladeRF firmware load
+alias bladerunner='bladeRF-cli -l ~/.bladeRF/firmware/hostedx40-latest.rbf'

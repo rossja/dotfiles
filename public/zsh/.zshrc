@@ -11,6 +11,9 @@ export LC_ALL=en_US.UTF-8
 # General Config
 # ==================================================
 
+# source the private config if it exists
+[[ -f ~/.zsh.priv ]] && . ~/.zsh.priv
+
 # kill the inverse % on non-terminated end of line
 export PROMPT_EOL_MARK=""
 
@@ -52,6 +55,7 @@ fi
 
 # bladeRF default location
 [[ -d /opt/local/bin/ ]] && export PATH="/opt/local/bin/:$PATH"
+
 # ==================================================
 # dev opts
 # ==================================================
@@ -89,7 +93,6 @@ export LDFLAGS="-L/usr/local/opt/mysql-client/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/mysql-client/include $CPPFLAGS"
 export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-
 # prefer brew sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
@@ -97,7 +100,6 @@ export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
 export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # prefer brew openblas
-
 export LDFLAGS="-L/usr/local/opt/openblas/lib"
 export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
 export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
@@ -106,7 +108,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
-#
+
 # ==================================================
 # Compiler Settings
 # ==================================================

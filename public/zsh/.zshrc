@@ -11,8 +11,12 @@ export LC_ALL=en_US.UTF-8
 # General Config
 # ==================================================
 
+# Setup some useful vars
+export binpub="$HOME/Documents/dotfiles/public/bin"
+export binpriv="$HOME/Documents/dotfiles/private/bin"
+
 # source the private config if it exists
-[[ -f ~/.zsh.priv ]] && . ~/.zsh.priv
+[[ -f ~/.zshrc.priv ]] && . ~/.zshrc.priv
 
 # kill the inverse % on non-terminated end of line
 export PROMPT_EOL_MARK=""
@@ -53,7 +57,7 @@ fi
 # typora on linux
 [[ -d /usr/share/typora/Typora ]] && export PATH="/usr/share/typora/Typora:$PATH"
 
-# bladeRF default location
+# bladeRF
 [[ -d /opt/local/bin/ ]] && export PATH="/opt/local/bin/:$PATH"
 
 # ==================================================

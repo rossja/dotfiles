@@ -59,4 +59,4 @@ alias easy-rsa="docker run --rm -it -v $HOME/src/pki:/pki tonymke/easy-rsa"
 alias amongo="mongo -u $appDbUser -p appDbPass $appDbName"
 
 # bladeRF firmware load
-alias bladerunner='bladeRF-cli -l ~/.bladeRF/firmware/hostedx40-latest.rbf'
+alias bladerunner='bladeRF-cli -l ~/.bladeRF/hostedx40-latest.rbf; bladeRF-cli -i'

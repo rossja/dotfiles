@@ -25,8 +25,9 @@ alias edit='/usr/local/bin/code-insiders'
 # -------------------------------------------------
 # handy for getting to the dotfiles dirs quickly
 # -------------------------------------------------
-alias cdf='cd $HOME/Documents/dotfiles'
-alias cdfp='cd $HOME/Documents/dotfiles/public'
+alias cdot='cd $HOME/Documents/dotfiles'
+alias pubdot='cd $HOME/Documents/dotfiles/public'
+alias privdot='cd $HOME/Documents/dotfiles/private'
 
 # -------------------------------------------------
 # git fun

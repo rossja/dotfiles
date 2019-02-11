@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# quickly checks a remote server to see if SNI is in play
+# useful for debugging Burp HTTPS connectivity problems
+
+HOST=$1
+DOMAIN=$2
+
+openssl s_client -connect  $HOST:443
+openssl s_client -connect  $HOST:443 -servername $DOMAIN

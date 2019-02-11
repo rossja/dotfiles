@@ -230,6 +230,8 @@ plugins=(
   jsontools
   osx
   sudo
+  kubectl
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh

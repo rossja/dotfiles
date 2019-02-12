@@ -52,7 +52,7 @@ alias openvault="vault operator unseal $Unseal_Key_1; vault operator unseal $Uns
 alias file2vault="cat $1| vault kv put $2 value=-" # arg1=filepath  arg2=vaultpath
 alias cip="docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}'" # pass in a container ID to get the IP for it
 alias cips="docker ps -q |xargs docker inspect --format '{{.Name}} : {{range .NetworkSettings.Networks}}{{.IPAddress}}, {{end}}'" # get all the IPs for every container
-alias dockershell="docker exec -it ${1} /bin/bash"
+alias dockershell="docker exec -it ${1} ${2}"
 
 # -------------------------------------------------
 # random other stuff

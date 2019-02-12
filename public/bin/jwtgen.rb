@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'jwt'
 
 rsa_private = OpenSSL::PKey::RSA.generate 2048

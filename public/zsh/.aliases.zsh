@@ -20,7 +20,8 @@ alias hcurl="curl -s -o /dev/null -L -D - -A 'Mozilla/5.0 (Macintosh; Intel Mac 
 # -------------------------------------------------
 # vscode handy helper
 # -------------------------------------------------
-alias edit='/usr/local/bin/code-insiders'
+[[ -x /usr/local/bin/code ]] && alias edit='/usr/local/bin/code'
+[[ -x /usr/local/bin/code-insiders ]] && alias edit='/usr/local/bin/code-insiders'
 
 # -------------------------------------------------
 # handy for getting to the dotfiles dirs quickly

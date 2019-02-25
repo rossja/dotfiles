@@ -1,2 +1,2 @@
 #!/bin/bash
-curl http://cb.pe/ip
+curl https://cb.pe/ip

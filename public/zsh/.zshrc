@@ -60,6 +60,9 @@ fi
 # bladeRF
 [[ -d /opt/local/bin/ ]] && export PATH="/opt/local/bin/:$PATH"
 
+# prefer Oracle JDK
+[[ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin ]] && export PATH="/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin:$PATH"
+
 # ==================================================
 # dev opts
 # ==================================================

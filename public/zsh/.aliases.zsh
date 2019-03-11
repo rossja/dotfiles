@@ -10,7 +10,7 @@ alias l.='ls -la'
 # -------------------------------------------------
 # brew maintenance
 # -------------------------------------------------
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias brewup='brew update; brew upgrade; brew cleanup --prune-prefix; brew cleanup; brew doctor'
 
 # -------------------------------------------------
 # header curl (useful for web app testing)

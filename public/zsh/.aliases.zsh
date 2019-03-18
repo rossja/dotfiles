@@ -1,16 +1,16 @@
 # -------------------------------------------------
 # ls tweaks
 # -------------------------------------------------
-#alias ls='gls --color=auto' # requires coreutils on mac osx
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
-alias l.='ls -la'
+#alias ls="gls --color=auto" # requires coreutils on mac osx
+alias ll="ls -alhF"
+alias la="ls -A"
+alias l="ls -CF"
+alias l.="ls -la"
 
 # -------------------------------------------------
 # brew maintenance
 # -------------------------------------------------
-alias brewup='brew update; brew upgrade; brew cleanup --prune-prefix; brew cleanup; brew doctor'
+alias brewup="brew update; brew upgrade; brew cleanup --prune-prefix; brew cleanup; brew doctor"
 
 # -------------------------------------------------
 # header curl (useful for web app testing)
@@ -20,15 +20,15 @@ alias hcurl="curl -s -o /dev/null -L -D - -A 'Mozilla/5.0 (Macintosh; Intel Mac 
 # -------------------------------------------------
 # vscode handy helper
 # -------------------------------------------------
-[[ -x /usr/local/bin/code ]] && alias edit='/usr/local/bin/code'
-[[ -x /usr/local/bin/code-insiders ]] && alias edit='/usr/local/bin/code-insiders'
+[[ -x /usr/local/bin/code ]] && alias edit="/usr/local/bin/code"
+[[ -x /usr/local/bin/code-insiders ]] && alias edit="/usr/local/bin/code-insiders"
 
 # -------------------------------------------------
 # handy for getting to the dotfiles dirs quickly
 # -------------------------------------------------
-alias cdot='cd $HOME/Documents/dotfiles'
-alias pubdot='cd $HOME/Documents/dotfiles/public'
-alias privdot='cd $HOME/Documents/dotfiles/private'
+alias cdot="cd $HOME/Documents/dotfiles"
+alias pubdot="cd $HOME/Documents/dotfiles/public"
+alias privdot="cd $HOME/Documents/dotfiles/private"
 
 # -------------------------------------------------
 # git fun
@@ -63,4 +63,7 @@ alias dockershell="docker exec -it ${1} ${2}"
 alias amongo="mongo -u $appDbUser -p appDbPass $appDbName"
 
 # bladeRF firmware load
-alias bladerunner='bladeRF-cli -l ~/.bladeRF/hostedx40-latest.rbf; bladeRF-cli -i'
+alias bladerunner="bladeRF-cli -l ~/.bladeRF/hostedx40-latest.rbf; bladeRF-cli -i"
+
+# get rid of command number and timestamp from history
+alias histrim="history | cut -c 26-"

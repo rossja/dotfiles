@@ -1,0 +1,5 @@
+#!/bin/bash
+# netstat on mac is dumb so lsof works better to find open tcp ports
+
+sudo lsof -PiTCP -sTCP:LISTEN
+

@@ -66,6 +66,14 @@ fi
 # krew
 [[ -d $HOME/.krew ]] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# mactex
+[[ -d /usr/local/texlive/2019/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2019/bin/x86_64-darwin:$PATH"
+
+# android studio
+[[ -d /Users/json/Library/Android/sdk/build-tools/28.0.3 ]] && export PATH="/Users/json/Library/Android/sdk/build-tools/28.0.3:$PATH"
+[[ -d /Users/json/Library/Android/sdk/platform-tools ]] && export PATH="/Users/json/Library/Android/sdk/platform-tools:$PATH"
+[[ -d /Users/json/Library/Android/sdk/tools ]] && export PATH="/Users/json/Library/Android/sdk/tools:$PATH"
+
 # ==================================================
 # dev opts
 # ==================================================

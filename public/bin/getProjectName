@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -G http://codenames.herokuapp.com/api/codenames -d lists=adjectives,crayons,animals -d filters=random

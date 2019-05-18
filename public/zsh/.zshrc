@@ -83,7 +83,7 @@ if [ -d /usr/local/opt/go/ ]; then
     export PATH="$PATH:/usr/local/opt/go/libexec/bin"
     export GOROOT="/usr/local/opt/go/libexec/"
 fi
-export GOPATH="$HOME/src/go"
+export GOPATH="$HOME/src/golang"
 [[ -d $GOPATH ]] && export PATH="$GOPATH/bin:$PATH"
 
 # python virtualenvwrapper

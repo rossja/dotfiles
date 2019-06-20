@@ -24,6 +24,7 @@ alias hcurl="curl -s -o /dev/null -L -D - -A 'Mozilla/5.0 (Macintosh; Intel Mac 
 [[ -x /usr/local/bin/code ]] && alias edit="/usr/local/bin/code"
 [[ -x /usr/local/bin/code-insiders ]] && alias edit="/usr/local/bin/code-insiders"
 [[ -x /usr/local/bin/vscodium ]] && alias edit="/usr/local/bin/vscodium"
+[[ -x /bin/vscodium ]] && alias edit="/bin/vscodium"
 
 # -------------------------------------------------
 # handy for getting to the dotfiles dirs quickly

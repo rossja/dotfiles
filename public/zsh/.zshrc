@@ -30,6 +30,10 @@ export EDITOR="vim"
 # set the function path
 fpath=( "$HOME/.zsh.d" "${fpath[@]}" )
 
+# ignore commands that start with a space
+# useful when secrets need to be part of a command
+setopt HIST_IGNORE_SPACE
+
 # get the homebrew zsh completions for hub
 if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
   FPATH=/usr/local/share/zsh/site-functions:$FPATH
@@ -83,7 +87,7 @@ if [ -d /usr/local/opt/go/ ]; then
     export PATH="$PATH:/usr/local/opt/go/libexec/bin"
     export GOROOT="/usr/local/opt/go/libexec/"
 fi
-export GOPATH="$HOME/src/go"
+export GOPATH="$HOME/src/golang"
 [[ -d $GOPATH ]] && export PATH="$GOPATH/bin:$PATH"
 
 # python virtualenvwrapper

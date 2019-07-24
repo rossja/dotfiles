@@ -10,6 +10,7 @@ export LC_ALL=en_US.UTF-8
 # ==================================================
 # General Config
 # ==================================================
+ZSH_DISABLE_COMPFIX=true
 
 # Setup some useful vars
 export binpub="$HOME/Documents/dotfiles/public/bin"
@@ -74,9 +75,13 @@ fi
 [[ -d /usr/local/texlive/2019/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2019/bin/x86_64-darwin:$PATH"
 
 # android studio
-[[ -d /Users/json/Library/Android/sdk/build-tools/28.0.3 ]] && export PATH="/Users/json/Library/Android/sdk/build-tools/28.0.3:$PATH"
-[[ -d /Users/json/Library/Android/sdk/platform-tools ]] && export PATH="/Users/json/Library/Android/sdk/platform-tools:$PATH"
-[[ -d /Users/json/Library/Android/sdk/tools ]] && export PATH="/Users/json/Library/Android/sdk/tools:$PATH"
+[[ -d /$HOME/Library/Android/sdk/build-tools/29.0.0 ]] && export PATH="/$HOME/Library/Android/sdk/build-tools/29.0.0:$PATH"
+[[ -d /$HOME/Library/Android/sdk/platform-tools ]] && export PATH="/$HOME/Library/Android/sdk/platform-tools:$PATH"
+[[ -d /$HOME/Library/Android/sdk/tools ]] && export PATH="/$HOME/Library/Android/sdk/tools:$PATH"
+
+# python libs on mac
+[[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+[[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 
 # ==================================================
 # dev opts
@@ -248,14 +253,13 @@ plugins=(
   jsontools
   osx
   sudo
-  kubectl
   docker
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/json/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/json/bin/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/$HOME/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/$HOME/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/json/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/json/bin/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/$HOME/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/$HOME/bin/google-cloud-sdk/completion.zsh.inc'; fi

@@ -1,0 +1,18 @@
+#!/bin/bash
+# https://gist.github.com/jamieparfet/0479c938495f88d1b75b30aff318f735
+# This assumes that the ~6GB mojave installer is in the /Applications folder.
+# If it's not, just open the App Store, search Mojave, and you can download the installer file from there.
+
+hdiutil create -o /tmp/mojave.cdr -size 6g -layout SPUD -fs HFS+J
+hdiutil attach /tmp/mojave.cdr.dmg -noverify -mountpoint /Volumes/install_mojave
+sudo /Applications/Install\ macOS\ mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/install_mojave
+mv /tmp/mojave.cdr.dmg ~/Desktop/InstallSystem.dmg
+hdiutil detach /Volumes/Install\ macOS\ mojave
+hdiutil convert ~/Desktop/InstallSystem.dmg -format UDTO -o ~/Desktop/mojave.iso
+mv ~/Desktop/mojave.iso.cdr ~/Desktop/mojave.iso
+rm ~/Desktop/InstallSystem.dmg
+
+# Now there should be an ISO on your desktop called mojave.iso
+# Once mojave is installed, in order to install VMware tools to enable full-screen resolution, run:
+#   sudo spctl --master-disable
+# on the guest OS. That will disable Gatekeeper and allow any apps and the necessary kexts to run

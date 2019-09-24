@@ -32,10 +32,12 @@ This is a collection of configuration files I find handy
                 * Change scrollback lines to 100,000
        - Set New profile as default
 1. Link the zsh configurations:
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh`
+   ~~~
+   ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc
+   ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d
+   ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh
+   ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh
+   ~~~
 1. Close terminal, start iterm2
 1. Enjoy the awesome!
 
@@ -56,10 +58,12 @@ This is a collection of configuration files I find handy
 1. Install the desired fonts from `$HOME/Documents/dotfiles/public/fonts`
 1. Configure your terminal to use the desired font
 1. Link the zsh configurations:
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh`
-    - `ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh`
+   ~~~
+   ln -s $HOME/Documents/dotfiles/public/zsh/.zshrc $HOME/.zshrc
+   ln -s $HOME/Documents/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d
+   ln -s $HOME/Documents/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh
+   ln -s $HOME/Documents/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh
+   ~~~
 1. Restart terminal
 1. Enjoy the awesome!
 

@@ -40,6 +40,7 @@ alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)" && git push'
 
 # -------------------------------------------------
 # I hate typing
+# CLIENT_WORK_DIR is set in .zshrc.priv
 # -------------------------------------------------
 alias cdc="cd $CLIENT_WORK_DIR"
 alias cdcd="cd $CLIENT_WORK_DIR/docs"

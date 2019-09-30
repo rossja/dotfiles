@@ -70,3 +70,12 @@ alias bladerunner="bladeRF-cli -l ~/.bladeRF/hostedx40-latest.rbf; bladeRF-cli -
 
 # get rid of command number and timestamp from history
 alias histrim="history | cut -c 26-"
+
+# laforge aliases
+alias lfi="laforge infra"
+alias lfb="laforge build"
+alias lfbu="laforge build -u"
+alias lfsh="laforge shell"
+alias lfia="laforge -d infra apply"
+alias lfid="laforge -d infra destroy"
+alias lafixit="cd ../../../ && git pull && lfbu && cd - && lfia"

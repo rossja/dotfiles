@@ -27,6 +27,7 @@ export EDITOR="vim"
 
 # source aliases if one exists
 [[ -f ~/.aliases.zsh ]] && . ~/.aliases.zsh
+[[ -f ~/.aliases.zsh.priv ]] && . ~/.aliases.zsh.priv
 
 # set the function path
 fpath=( "$HOME/.zsh.d" "${fpath[@]}" )

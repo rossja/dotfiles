@@ -72,3 +72,9 @@ alias bladerunner="bladeRF-cli -l ~/.bladeRF/hostedx40-latest.rbf; bladeRF-cli -
 
 # get rid of command number and timestamp from history
 alias histrim="history | cut -c 26-"
+
+# a fun way to make random passwords
+alias randpw="openssl rand 60 | openssl base64 -A"
+
+# google cloud stuff
+alias gcpls='gcloud compute instances list | grep ${1}'

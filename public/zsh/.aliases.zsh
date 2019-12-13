@@ -78,3 +78,7 @@ alias randpw="openssl rand 60 | openssl base64 -A"
 
 # google cloud stuff
 alias gcpls='gcloud compute instances list | grep ${1}'
+
+# check ciphers and key lengths of SSH keys
+#export KEYSREGEX="${HOME}/.ssh/*.pub"
+alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f \"\${key}\" 2> /dev/null; echo -e \"\\n\";  done | uniq"

@@ -99,9 +99,11 @@ export GOPATH="$HOME/src/golang"
 # python virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME="$HOME/.virtualenvs"
-    export PROJECT_HOME="$HOME/src/py"
+    export PROJECT_HOME="$HOME/src/python"
     export VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
-    source "/usr/local/bin/virtualenvwrapper_lazy.sh"
+    # use python3 as the virtualenv default
+    export VIRTUALENVWRAPPER_PYTHON=python3
+    [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source "/usr/local/bin/virtualenvwrapper_lazy.sh"
 fi
 
 # add python2 bin to the path
@@ -136,6 +138,13 @@ export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+
+
+# dotnet
+[[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
+
+# opt out of dotnet telemetry
+DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # ==================================================
 # Compiler Settings
@@ -255,6 +264,7 @@ plugins=(
   osx
   sudo
   docker
+  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh

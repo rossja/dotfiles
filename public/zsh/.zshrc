@@ -261,7 +261,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 plugins=(
   dotenv
   jsontools
-  osx
   sudo
   docker
   virtualenv

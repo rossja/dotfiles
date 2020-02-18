@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# simple fix to the gatekeeper quarantine blocks that get in the way
+# of running binaries on mac os >= catalina
+# you can also just kill the gatekeeper globally with:
+#   `sudo spctl --master-disable`
+# but that's not recommended...
+
+FILE2FIX=$1
+
+xattr -d com.apple.quarantine $FILE2FIX

@@ -87,6 +87,6 @@ alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f
 if [[ $(which kubectl) ]]; then
   alias kubectl='microk8s kubectl'
 fi
-if [[ $(which helm) ]; then
+if [[ $(which helm) ]]; then
   alias helm='microk8s helm3'
 fi

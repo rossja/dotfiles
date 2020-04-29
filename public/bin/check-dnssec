@@ -1,0 +1,3 @@
+#!/bin/bash
+host=$1
+dig $host +dnssec +multi

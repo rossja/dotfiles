@@ -54,6 +54,9 @@ autoload docker-killall docker-rmstale docker-rmvols
 # /usr/local/[bin|sbin] comes first to prefer homebrew apps over mac defaults
 export PATH="/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
 
+# snapcraft on linux
+[[ -d  /snap/bin ]] && export PATH="${PATH}:/snap/bin"
+
 # coreutils
 if [ -d /usr/local/opt/coreutils ]; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

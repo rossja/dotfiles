@@ -90,3 +90,7 @@ fi
 if [[ $(which helm) ]]; then
   alias helm='microk8s helm3'
 fi
+
+# python3 ftw
+#alias python=/usr/local/bin/python3
+#alias pip=/usr/local/bin/pip3

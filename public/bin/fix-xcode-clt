@@ -1,0 +1,4 @@
+#!/bin/bash
+# simple fix for when xcode command line tools updates are "stuck"
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install

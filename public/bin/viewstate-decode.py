@@ -4,7 +4,7 @@ import urllib.parse
 import base64
 import string
 
-sys.path.append('/Users/json/Documents/lib/python')
+sys.path.append('.')
 from viewstate import ViewState
 
 urlEncodedViewState = sys.argv[1]

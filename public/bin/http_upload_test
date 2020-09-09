@@ -1,10 +1,11 @@
 #!/bin/bash
 HOSTFILE='./servers.txt'
+TESTFILE='./testdata.txt'
 
 for i in `cat ${HOSTFILE}`; do
   echo
   echo
   echo ${i}
   echo
-  curl -k -T ig_jross.txt https://${i}/
+  curl -k -T ${TESTFILE} https://${i}/
 done

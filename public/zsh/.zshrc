@@ -76,7 +76,7 @@ fi
 [[ -d $HOME/.krew ]] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # mactex
-[[ -d /usr/local/texlive/2019/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2019/bin/x86_64-darwin:$PATH"
+[[ -d /usr/local/texlive/2020/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
 
 # android studio
 [[ -d /$HOME/Library/Android/sdk/build-tools/29.0.0 ]] && export PATH="/$HOME/Library/Android/sdk/build-tools/29.0.0:$PATH"

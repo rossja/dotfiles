@@ -87,6 +87,9 @@ fi
 [[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 [[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
+# dotnet
+[[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
+
 # ==================================================
 # dev opts
 # ==================================================

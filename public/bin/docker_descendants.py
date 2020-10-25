@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# sauce: https://gist.github.com/altaurog/21ea7afe578a523e3dfe8d8a746f1e7d
+#
 # usage: python3 docker_descendants.py <image_id> ...
 
 import sys

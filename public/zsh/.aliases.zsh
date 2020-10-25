@@ -51,6 +51,8 @@ alias cdcs="cd $CLIENT_WORK_DIR/src"
 # -------------------------------------------------
 # docker stuff I find useful
 # -------------------------------------------------
+alias di="docker images|sort -n"
+alias dps="docker ps -a"
 
 # vault things
 alias vault="docker exec -i $(docker ps|awk '/vault:latest/ {print $1}') vault"

@@ -53,6 +53,10 @@ alias cdcs="cd $CLIENT_WORK_DIR/src"
 # -------------------------------------------------
 alias di="docker images|sort -n"
 alias dps="docker ps -a"
+# this next bit lets you build a docker image passing in
+# tons of args via a .env file, like so:
+# `docker build -t rails-toolbox -f Dockerfile.rails $(args) .`
+alias args='for var in `cat .env`; do out+="--build-arg ${var} "; done; echo ${out}; out=""'
 
 # vault things
 alias vault="docker exec -i $(docker ps|awk '/vault:latest/ {print $1}') vault"

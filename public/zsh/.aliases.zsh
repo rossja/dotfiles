@@ -98,5 +98,5 @@ if [[ $(which helm) ]]; then
 fi
 
 # python3 ftw
-#alias python=/usr/local/bin/python3
-#alias pip=/usr/local/bin/pip3
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3

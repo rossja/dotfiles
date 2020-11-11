@@ -84,6 +84,7 @@ fi
 [[ -d /$HOME/Library/Android/sdk/tools ]] && export PATH="/$HOME/Library/Android/sdk/tools:$PATH"
 
 # python libs on mac
+[[ -d $HOME/Library/Python/3.8/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 [[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 [[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 

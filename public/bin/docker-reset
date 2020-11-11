@@ -1,0 +1,1 @@
+docker-killall && docker-rmstale && docker-rmvols && docker system prune

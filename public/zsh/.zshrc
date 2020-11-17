@@ -272,7 +272,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
+source $ZSH/plugins/calc/calc.plugin.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 [[ -d /usr/local/Caskroom/google-cloud-sdk/lagtest/google-cloud-sdk ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'

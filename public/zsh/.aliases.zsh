@@ -90,12 +90,12 @@ alias gcpls='gcloud compute instances list | grep ${1}'
 alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f \"\${key}\" 2> /dev/null; echo -e \"\\n\";  done | uniq"
 
 # microk8s aliases -- counterintuitive because `which` returns '1' if command not found
-if [[ $(which kubectl) ]]; then
-  alias kubectl='microk8s kubectl'
-fi
-if [[ $(which helm) ]]; then
-  alias helm='microk8s helm3'
-fi
+#if [[ $(which kubectl) ]]; then
+#  alias kubectl='microk8s kubectl'
+#fi
+#if [[ $(which helm) ]]; then
+#  alias helm='microk8s helm3'
+#fi
 
 # python3 ftw
 alias python=/usr/local/bin/python3

@@ -30,22 +30,25 @@ export EDITOR="vim"
 [[ -f ~/.aliases.zsh.priv ]] && . ~/.aliases.zsh.priv
 
 # set the function path
-fpath=( "$HOME/.zsh.d" "${fpath[@]}" )
+fpath=("$HOME/.zsh.d" "${fpath[@]}")
+fpath=($fpath ~/.zsh/completion)
+
+# get the homebrew zsh completions for hub
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+  fpath=/usr/local/share/zsh/site-functions:$FPATH
+fi
 
 # ignore commands that start with a space
 # useful when secrets need to be part of a command
 setopt HIST_IGNORE_SPACE
-
-# get the homebrew zsh completions for hub
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
-fi
 
 # autoload functions
 # don't need these as much now that I discovered the
 # magic of`docker system prune --volumes`, but still
 # are occasionally handy to have
 autoload docker-killall docker-rmstale docker-rmvols
+autoload -U compinit
+compinit
 
 # ==================================================
 # set up PATH
@@ -264,7 +267,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 # oh-my-zsh plugins
 # ==================================================
 plugins=(
-  dotenv
   jsontools
   sudo
   docker
@@ -284,3 +286,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

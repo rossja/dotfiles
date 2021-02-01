@@ -30,22 +30,25 @@ export EDITOR="vim"
 [[ -f ~/.aliases.zsh.priv ]] && . ~/.aliases.zsh.priv
 
 # set the function path
-fpath=( "$HOME/.zsh.d" "${fpath[@]}" )
+fpath=("$HOME/.zsh.d" "${fpath[@]}")
+fpath=($fpath ~/.zsh/completion)
+
+# get the homebrew zsh completions for hub
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+  fpath=/usr/local/share/zsh/site-functions:$FPATH
+fi
 
 # ignore commands that start with a space
 # useful when secrets need to be part of a command
 setopt HIST_IGNORE_SPACE
-
-# get the homebrew zsh completions for hub
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
-fi
 
 # autoload functions
 # don't need these as much now that I discovered the
 # magic of`docker system prune --volumes`, but still
 # are occasionally handy to have
 autoload docker-killall docker-rmstale docker-rmvols
+autoload -U compinit
+compinit
 
 # ==================================================
 # set up PATH
@@ -84,9 +87,13 @@ fi
 [[ -d /$HOME/Library/Android/sdk/tools ]] && export PATH="/$HOME/Library/Android/sdk/tools:$PATH"
 
 # python libs on mac
+[[ -d $HOME/Library/Python/3.9/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 [[ -d $HOME/Library/Python/3.8/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 [[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 [[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+
+# dotnet
+[[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
 
 # ==================================================
 # dev opts
@@ -109,9 +116,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export VIRTUALENVWRAPPER_PYTHON=python3
     [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source "/usr/local/bin/virtualenvwrapper_lazy.sh"
 fi
-
-# add python2 bin to the path
-#[[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 # prefer gnu getopt
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
@@ -270,7 +274,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
+source $ZSH/plugins/calc/calc.plugin.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 [[ -d /usr/local/Caskroom/google-cloud-sdk/lagtest/google-cloud-sdk ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'

@@ -17,6 +17,9 @@ alias brewup="brew update; brew upgrade; brew cleanup --prune-prefix; brew clean
 # -------------------------------------------------
 alias hcurl="curl -s -o /dev/null -L -D - -A 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'"
 
+# preserve color output from grep across pipes
+alias grepc="grep --color=always"
+
 # -------------------------------------------------
 # vscode handy helper
 # updated to include vscodium because telemetry sux

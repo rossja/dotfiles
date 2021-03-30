@@ -72,8 +72,13 @@ fi
 # bladeRF
 [[ -d /opt/local/bin/ ]] && export PATH="/opt/local/bin/:$PATH"
 
-# prefer Oracle 8 JDK
-[[ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin ]] && export PATH="/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin:$PATH"
+# prefer openjdk
+[[ -d "/usr/local/opt/openjdk@8/bin" ]]  && export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export JAVA_HOME="/usr/local/opt/openjdk@8"
+
+# prefer oracle jdk
+#[[ -d "$HOME/src/jdk16/Contents/Home/bin" ]]  && export PATH="$HOME/src/jdk16/Contents/Home/bin:$PATH"
+#export JAVA_HOME="$HOME/src/jdk16/Contents/Home"
 
 # krew
 [[ -d $HOME/.krew ]] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -82,9 +87,9 @@ fi
 [[ -d /usr/local/texlive/2020/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
 
 # android studio
-[[ -d /$HOME/Library/Android/sdk/build-tools/29.0.0 ]] && export PATH="/$HOME/Library/Android/sdk/build-tools/29.0.0:$PATH"
-[[ -d /$HOME/Library/Android/sdk/platform-tools ]] && export PATH="/$HOME/Library/Android/sdk/platform-tools:$PATH"
-[[ -d /$HOME/Library/Android/sdk/tools ]] && export PATH="/$HOME/Library/Android/sdk/tools:$PATH"
+[[ -d $HOME/Library/Android/sdk/build-tools/30.0.3 ]] && export PATH="$HOME/Library/Android/sdk/build-tools/30.0.3:$PATH"
+[[ -d $HOME/Library/Android/sdk/platform-tools ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+[[ -d $HOME/Library/Android/sdk/tools ]] && export PATH="$HOME/Library/Android/sdk/tools:$PATH"
 
 # python libs on mac
 [[ -d $HOME/Library/Python/3.9/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.9/bin"
@@ -147,6 +152,8 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
 
+# prefer openjdk
+[[ -d "/usr/local/opt/openjdk@8/include" ]] && export CPPFLAGS="-I/usr/local/opt/openjdk@8/include:$CPPFLAGS"
 
 # dotnet
 [[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"

@@ -1,0 +1,3 @@
+#!/bin/bash
+# grab a random project name from the Heroku name generator
+curl -G http://codenames.herokuapp.com/api/codenames -d lists=adjectives,crayons,animals -d filters=random

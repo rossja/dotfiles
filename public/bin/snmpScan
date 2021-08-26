@@ -1,0 +1,29 @@
+#!/bin/bash
+# simple SNMP scan using common strings as the community
+# snmp.hosts can be generated from a .gnmap file eg.:
+# awk '/161\/open\/udp/ {print $2}' *UDP*.gnmap|ipsort > snmp.hosts
+# supports v1 or v2c scan - defaults to v1
+
+TIMEOUT=3 # sets the snmpwalk host timeout (in seconds)
+
+for HOST in `cat snmp.hosts`
+do
+   echo ---------------------------------------------
+   echo ${HOST}
+   for USER in public private admin cisco snmpd mngt
+   do
+      case $1 in
+         1)
+            snmpwalk -v 1 -t ${TIMEOUT} -c ${USER} ${HOST} > ${HOST}_${USER}.txt
+         ;;
+
+         2c)
+            snmpwalk -v 2c -t ${TIMEOUT} -c ${USER} ${HOST} > ${HOST}_${USER}.txt
+         ;;
+
+         *)
+            snmpwalk -v 1 -t ${TIMEOUT} -c ${USER} ${HOST} > ${HOST}_${USER}.txt
+         ;;
+      esac
+   done
+done

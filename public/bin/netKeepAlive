@@ -1,0 +1,5 @@
+#!/bin/bash
+# pings google.com every three seconds
+# useful for things like flaky VPN connections or SSH tunnels
+# that require traffic to keep the connection alive
+clear;while true; do ping -c 1 google.com; sleep 3; done|grep loss

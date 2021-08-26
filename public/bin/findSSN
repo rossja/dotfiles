@@ -1,0 +1,4 @@
+#!/bin/bash
+# find strings that look like US based SSN in the specified file
+FILE=$1
+grep --color=always '[0-9]\{3\}-[0-9]\{2\}-[0-9]\{4\}' ${FILE}

@@ -1,0 +1,6 @@
+#!/bin/bash
+# setup an encrypted USB drive on usbcrypt mountpoint
+# change the device to whatever yours actually is
+DEVICE=/dev/sdb1
+sudo cryptsetup luksOpen $DEVICE usbcrypt
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+# run an HTTP HEAD on every server in a list of hosts
+for i in `cat servers.txt`; do
+echo "===================================";
+echo "${i}";
+echo "===================================";
+echo -e "HEAD / HTTP/1.1\nHost: ${i}\r\n" | nc -w 2 ${i} ${1};
+done;

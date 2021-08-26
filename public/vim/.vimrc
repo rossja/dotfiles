@@ -1,0 +1,37 @@
+" pathogen lets us manage vim plugins better
+" to install it:
+" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+" then install plugins to ~/.vim/bundle/<plugindir>
+execute pathogen#infect()
+filetype plugin indent on
+syntax on
+
+set nocompatible
+set incsearch
+set nu
+
+"set tw=80
+"set textwidth=80
+set ruler
+
+set noerrorbells visualbell t_vb=
+set tags=.ctags
+
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set tabstop=2
+
+set autoindent
+" this lets us use F10 to turn off autoindent on paste
+set pastetoggle=<F10>
+
+" removes trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" load the closetag plugin
+au Filetype html,xml,xsl source ~/.vim/bundle/closetag/closetag.vim
+
+" make .pt files slate2 colorscheme
+au BufReadPost *.pt colorscheme slate2

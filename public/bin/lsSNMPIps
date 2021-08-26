@@ -1,0 +1,19 @@
+#!/bin/bash
+# use after ./snmpScan to get the list of IP addresses that responsed
+# must be run in the directory that stores the output files
+case $1 in
+  ips)
+    ls -l |awk '{print $5" "$9}' |sort -n |egrep -v ^0 |awk -F_ '{print $1}' \
+      |awk '{print $2}' |ipsort |uniq |grep -v snmp.hosts
+  ;;
+
+  strings)
+    ls -l |awk '{print $5" "$9}' |sort -n |egrep -v ^0 \
+      |awk -F_ '{print $1" ["$2"]"}' |sed 's/.txt//g' |grep -v \\[\\]
+  ;;
+
+  *)
+    ls -l |awk '{print $5" "$9}' |sort -n |egrep -v ^0 |awk -F_ '{print $1}' \
+      |awk '{print $2}' |ipsort |uniq |grep -v snmp.hosts
+  ;;
+esac

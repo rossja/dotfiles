@@ -1,0 +1,7 @@
+#!/bin/bash
+# removes stale docker images
+# deprecated in favor of my zsh functions (in zsh/.zsh.d)
+for stale in `docker images | grep '^<none>' | awk '{print $3}'`
+do
+  docker rmi $stale
+done

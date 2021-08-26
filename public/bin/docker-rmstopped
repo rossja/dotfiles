@@ -1,0 +1,5 @@
+#!/bin/bash
+# removes stopped docker images
+# deprecated in favor of my zsh functions (in zsh/.zsh.d)
+#docker ps -aq -f status=exited
+docker ps -aq --no-trunc | xargs docker rm

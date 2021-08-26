@@ -1,0 +1,16 @@
+#!/bin/bash
+# kill .DS_Store files globally because mac
+
+case "$1" in
+
+  all)
+    # kill all of them everywhere
+    sudo find / -name .DS_Store -delete; killall Finder
+  ;;
+
+  *)
+    # default to killing from current dir down
+    sudo find . -name .DS_Store -delete
+  ;;
+
+esac

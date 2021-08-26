@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+use strict;
+use Net::ARP;
+
+Net::ARP::send_packet(
+   'lo',                 # Device
+   '127.0.0.1',          # Source IP
+   '127.0.0.1',          # Destination IP
+   'aa:bb:cc:aa:bb:cc',  # Source MAC
+   'FF:FF:FF:FF:FF:FF',  # Destinaton MAC
+   'reply'               # ARP operation
+);

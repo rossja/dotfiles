@@ -1,0 +1,12 @@
+#!/bin/bash
+IP=$1
+MODE=$2
+
+case "${MODE}" in
+  dns) # Use the DNS based service
+    dig +short ${IP}.origin.asn.cymru.com TXT
+    ;;
+  *) # Default to the WHOIS service
+    whois -h whois.cymru.com ${IP}
+    ;;
+esac

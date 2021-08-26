@@ -1,0 +1,9 @@
+#!/bin/bash
+# takes an XML file as input and formats it
+if [ -f $1 ];
+then
+  XMLFILE=$1
+  cat ${XMLFILE} | xmllint --format > ${XMLFILE}-formatted.xml
+else
+  pbpaste | xmllint --format > pbpaste-formatted.xml
+

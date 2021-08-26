@@ -1,0 +1,26 @@
+# Login variables
+# useful script to help keep a session alive while testing a website
+
+USERNAME='username'
+PASSWORD='password'
+COOKYJAR='cookies.txt'
+
+# Login and keep the cookies so further requests work
+wget --save-cookies $COOKYJAR \
+     --keep-session-cookies \
+     --no-check-certificate \
+     --post-data "username=$USERNAME&password=$PASSWORD" \
+     -O /dev/null \
+  https://some.com/login.html
+
+# Nets of Interest
+wget --load-cookies $COOKYJAR \
+     --keep-session-cookies \
+     --no-check-certificate \
+     --post-data 'submit=Download' \
+     --referer=https://some.com/refurl.html \
+     -O output.txt \
+  https://some.com/some.html
+
+# Remove the cookies file
+rm $COOKYJAR

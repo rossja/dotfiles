@@ -1,0 +1,9 @@
+#!/bin/bash
+# runs a SIP OPTIONS request on every server in a list of hosts
+
+for i in `cat servers.txt`; do
+echo "===================================";
+echo "${i}";
+echo "===================================";
+echo -e "OPTIONS 5558675309@${i} SIP/2.0\nVia: SIP/2.0/UDP pc33.atlanta.com;branch=z9hG4bKhjhs8ass877\nMax-Forwards: 70\nTo: <sip:5558675309@${i}>\nFrom: Jenny <sip:jenny@gotyournumber.com>;tag=1928301774\nCall-ID: a84b4c76e66710\nCSeq: 63104 OPTIONS\nContact: <sip:jenny@gotyournumber.com>\nAccept: application/sdp\nContent-Length: 0\r\n" | nc -u ${i} ${1};
+done;

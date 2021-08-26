@@ -1,0 +1,4 @@
+#!/bin/bash
+# checks DNSSec for the given host
+host=$1
+dig $host +dnssec +multi

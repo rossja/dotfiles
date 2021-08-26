@@ -1,0 +1,8 @@
+# loop through the containers and stop them
+for container in `docker ps -a |awk '{print $1}'|grep -v CONTAINER`;
+do
+  docker stop $container
+done
+
+# kill all stopped containers
+docker ps -aq --no-trunc | xargs docker rm

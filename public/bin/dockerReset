@@ -1,0 +1,4 @@
+#!/bin/bash
+# resets and removes stale docker things to clear out old cruft
+# note that this uses the zsh functions (in zsh/.zsh.d)
+docker-killall && docker-rmstale && docker-rmvols && docker system prune --volumes

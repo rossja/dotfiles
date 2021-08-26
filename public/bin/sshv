@@ -1,0 +1,5 @@
+#!/bin/bash
+# useful for debugging ssh based problems
+# To debug git+ssh connections run like so:
+#   GIT_SSH=sshv git push
+ssh -vvv "$@"

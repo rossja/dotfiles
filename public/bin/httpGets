@@ -1,0 +1,8 @@
+#!/bin/bash
+# run an HTTP GET on every server in a list of hosts
+for i in `cat servers.txt`; do
+echo "===================================";
+echo "${i}";
+echo "===================================";
+echo -e "GET / HTTP/1.1\nHost: ${i}\r\n" | nc ${i} $1;
+done;

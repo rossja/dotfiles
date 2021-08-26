@@ -1,0 +1,4 @@
+#!/bin/bash
+# simple script to recover a deleted file from the git repo
+FILE=$1
+git checkout $(git rev-list -n 1 HEAD -- "${FILE}")^ -- "${FILE}"

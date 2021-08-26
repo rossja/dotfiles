@@ -1,0 +1,3 @@
+#!/bin/bash
+# get external IP address of the host running the script
+curl https://ifconfig.me

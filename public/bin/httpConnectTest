@@ -1,0 +1,10 @@
+#!/bin/bash
+# run an HTTP CONNECT to google on every server in a list of hosts
+HOSTFILE='./targets.txt'
+
+for i in `cat ${HOSTFILE}`; do
+  echo
+  echo ${i}
+  echo -e "CONNECT http://google.com HTTP/1.0\n\n" |nc ${i} 80
+  echo
+done

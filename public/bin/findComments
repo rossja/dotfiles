@@ -1,0 +1,4 @@
+#!/bin/bash
+# search all files in the current directory for
+# string patterns that look like comments
+egrep -r "\/\*|^\/\/|\s\/\/|\<\!" * |grep -v Binary

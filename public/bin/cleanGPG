@@ -1,0 +1,3 @@
+#!/bin/bash
+# grabs a clean PGP fingerprint for all the keys in the keyring
+gpg --list-keys --with-colons | awk -F: '/^pub:/ { print  }'

@@ -1,0 +1,9 @@
+#!/bin/bash
+# takes a JSON file as input and formats it
+if [[ -f $1 ]];
+then
+  JSONFILE=$1
+  cat ${JSONFILE} | python -m json.tool > ${JSONFILE}-formatted.json
+else
+  pbpaste | python -m json.tool > pbpaste-formatted.json
+fi

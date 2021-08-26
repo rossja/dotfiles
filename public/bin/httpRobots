@@ -1,0 +1,9 @@
+#!/bin/bash
+# run an HTTP GET to /robots.txt on every server in a list of hosts
+
+for i in `cat servers.txt`; do
+echo "===================================";
+echo "${i}";
+echo "===================================";
+echo -e "GET /robots.txt HTTP/1.1\nHost: ${i}\r\n" | nc ${i} $1;
+done;

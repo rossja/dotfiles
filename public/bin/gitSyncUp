@@ -1,0 +1,14 @@
+#!/bin/bash
+# =================================================================
+# merges the upstream repo with the fork origin/master
+# this requires that a remote has been configured that
+# points to the upstream repo, and is called "upstream"
+# e.g.: git remote add upstream https://github.com/foo/bar.git
+# see also: gitAddUp
+# It also requires that you are executing from inside the git repo
+# =================================================================
+git fetch upstream
+git checkout master
+git merge upstream/master
+git commit -a -m "merged upstream"
+git push

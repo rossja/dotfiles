@@ -1,0 +1,3 @@
+#!/bin/bash
+# greps a file for a pattern matching IPv4 addresses
+grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' $1

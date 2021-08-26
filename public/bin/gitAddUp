@@ -1,0 +1,4 @@
+#!/bin/bash
+# adds a remote upstream to the current git repo; for syncing forks
+# see also: gitSyncUp
+git remote add upstream $1

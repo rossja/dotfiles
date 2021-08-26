@@ -1,0 +1,3 @@
+#!/bin/bash
+# dumps android manifest file from specified apk using aapt
+aapt dump xmltree $1 AndroidManifest.xml

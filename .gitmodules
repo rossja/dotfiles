@@ -1,0 +1,18 @@
+[submodule "public/vim/.vim/bundle/snipmate"]
+	path = public/vim/.vim/bundle/snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "public/vim/.vim/bundle/closetag"]
+	path = public/vim/.vim/bundle/closetag
+	url = https://github.com/alvan/vim-closetag.git
+[submodule "public/vim/.vim/bundle/delimitMate"]
+	path = public/vim/.vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "public/vim/.vim/bundle/tlib"]
+	path = public/vim/.vim/bundle/tlib
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "public/vim/.vim/bundle/mw-utils"]
+	path = public/vim/.vim/bundle/mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "public/vim/.vim/bundle/snippets"]
+	path = public/vim/.vim/bundle/snippets
+	url = https://github.com/honza/vim-snippets.git

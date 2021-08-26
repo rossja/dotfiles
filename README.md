@@ -2,6 +2,12 @@
 
 This is a collection of configuration files I find handy
 
+## Homebrew
+
+1. cd into the public/homebrew directory
+1. Run `brew bundle install` to install everything in Brewfile
+1. If you prefer to use the minimal file run `brew bundle install --file=Brewfile.min` instead
+
 ## Cool ZSH prompt: Zero to Eleven
 
 ### on Mac OS X
@@ -31,12 +37,16 @@ This is a collection of configuration files I find handy
             1. Terminal
                 * Change scrollback lines to 100,000
        - Set New profile as default
-1. Link the zsh configurations:
+1. Link the configurations:
    ~~~
-   ln -s $HOME/src/dotfiles/public/zsh/.zshrc $HOME/.zshrc
-   ln -s $HOME/src/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d
-   ln -s $HOME/src/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh
-   ln -s $HOME/src/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh
+   ln -s $HOME/src/dotfiles/public/zsh/zshrc $HOME/.zshrc
+   ln -s $HOME/src/dotfiles/public/zsh/zsh.d $HOME/.zsh.d
+   ln -s $HOME/src/dotfiles/public/zsh/aliases.zsh $HOME/.aliases.zsh
+   ln -s $HOME/src/dotfiles/public/zsh/oh-my-zsh $HOME/.oh-my-zsh
+   ln -s $HOME/src/dotfiles/public/vim/vimrc $HOME/.vimrc
+   ln -s $HOME/src/dotfiles/public/vim/vim $HOME/.vim
+   ln -s $HOME/src/dotfiles/public/dev/wgetrc $HOME/.wgetrc
+   ln -s $HOME/src/dotfiles/public/dev/eslintrc.json $HOME/.eslintrc.json
    ~~~
 1. Close terminal, start iterm2
 1. Enjoy the awesome!
@@ -47,9 +57,7 @@ This is a collection of configuration files I find handy
 **A screenshot of the same config on the system terminal, using the Pro theme**
 ![screenshot of the same config on the system terminal, using the Pro theme](images/screenshot-terminal-pro.png?raw=true "another handy screenshot")
 
-
-
-
+----
 
 ### on Linux (Ubuntu/Debian Based)
 
@@ -57,12 +65,16 @@ This is a collection of configuration files I find handy
 1. Clone this repo: `git clone "https://github.com/rossja/dotfiles.git" "$HOME/src/dotfiles"`
 1. Install the desired fonts from `$HOME/Documents/dotfiles/public/fonts`
 1. Configure your terminal to use the desired font
-1. Link the zsh configurations:
+1. Link the configurations:
    ~~~
-   ln -s $HOME/src/dotfiles/public/zsh/.zshrc $HOME/.zshrc
-   ln -s $HOME/src/dotfiles/public/zsh/.zsh.d $HOME/.zsh.d
-   ln -s $HOME/src/dotfiles/public/zsh/.aliases.zsh $HOME/.aliases.zsh
-   ln -s $HOME/src/dotfiles/public/zsh/.oh-my-zsh $HOME/.oh-my-zsh
+   ln -s $HOME/src/dotfiles/public/zsh/zshrc $HOME/.zshrc
+   ln -s $HOME/src/dotfiles/public/zsh/zsh.d $HOME/.zsh.d
+   ln -s $HOME/src/dotfiles/public/zsh/aliases.zsh $HOME/.aliases.zsh
+   ln -s $HOME/src/dotfiles/public/zsh/oh-my-zsh $HOME/.oh-my-zsh
+   ln -s $HOME/src/dotfiles/public/vim/vimrc $HOME/.vimrc
+   ln -s $HOME/src/dotfiles/public/vim/vim $HOME/.vim
+   ln -s $HOME/src/dotfiles/public/dev/wgetrc $HOME/.wgetrc
+   ln -s $HOME/src/dotfiles/public/dev/eslintrc.json $HOME/.eslintrc.json
    ~~~
 1. Restart terminal
 1. Enjoy the awesome!

@@ -1,0 +1,4 @@
+.DS_Store
+private/
+public/vim/.vim/bundle/vim-wakatime
+public/vim/.vim/.netrwhist

@@ -13,8 +13,8 @@ export LC_ALL=en_US.UTF-8
 ZSH_DISABLE_COMPFIX=true
 
 # Setup some useful vars
-export binpub="$HOME/Documents/dotfiles/public/bin"
-export binpriv="$HOME/Documents/dotfiles/private/bin"
+export binpub="$HOME/src/dotfiles/public/bin"
+export binpriv="$HOME/src/dotfiles/private/bin"
 
 # source the private config if it exists
 [[ -f ~/.zshrc.priv ]] && . ~/.zshrc.priv
@@ -171,9 +171,9 @@ export ARCHFLAGS="-arch x86_64"
 # ==================================================
 # my own bin uber alles
 # ==================================================
-[[ -d "$HOME/Documents/bin" ]] && export PATH="$HOME/Documents/bin:$PATH"
-[[ -d "$HOME/Documents/dotfiles/public/bin" ]] && export PATH="$HOME/Documents/dotfiles/public/bin:$PATH"
-[[ -d "$HOME/Documents/dotfiles/private/bin" ]] && export PATH="$HOME/Documents/dotfiles/private/bin:$PATH"
+[[ -d "$HOME/src/bin" ]] && export PATH="$HOME/src/bin:$PATH"
+[[ -d "$HOME/src/dotfiles/public/bin" ]] && export PATH="$HOME/src/dotfiles/public/bin:$PATH"
+[[ -d "$HOME/src/dotfiles/private/bin" ]] && export PATH="$HOME/src/dotfiles/private/bin:$PATH"
 
 # ==================================================
 # docker things

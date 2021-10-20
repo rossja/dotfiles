@@ -88,7 +88,7 @@ export JAVA_HOME="/usr/local/opt/openjdk"
 [[ -d /usr/local/texlive/2020/bin/x86_64-darwin ]] && export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
 
 # android studio
-[[ -d $HOME/Library/Android/sdk/build-tools/30.0.3 ]] && export PATH="$HOME/Library/Android/sdk/build-tools/30.0.3:$PATH"
+[[ -d $HOME/Library/Android/sdk/build-tools/31.0.0 ]] && export PATH="$HOME/Library/Android/sdk/build-tools/31.0.0:$PATH"
 [[ -d $HOME/Library/Android/sdk/platform-tools ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 [[ -d $HOME/Library/Android/sdk/tools ]] && export PATH="$HOME/Library/Android/sdk/tools:$PATH"
 

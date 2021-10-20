@@ -46,7 +46,7 @@ setopt HIST_IGNORE_SPACE
 # don't need these as much now that I discovered the
 # magic of`docker system prune --volumes`, but still
 # are occasionally handy to have
-autoload docker-killall docker-rmstale docker-rmvols
+autoload docker-killall docker-rmstale docker-rmvols docker-update-images
 autoload -U compinit
 compinit
 

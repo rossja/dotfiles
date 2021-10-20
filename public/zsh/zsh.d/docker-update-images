@@ -1,0 +1,3 @@
+# loops through all pulled images and re-pulls them from the source repo
+docker images | grep -v REPOSITORY | awk '{print $1":"$2}' | xargs -L1 docker pull
+docker image prune

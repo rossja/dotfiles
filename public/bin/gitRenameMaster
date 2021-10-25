@@ -1,0 +1,24 @@
+#!/bin/bash
+# Renames a git 'master' branch to 'main'
+
+echo -e "\n\nrenaming 'master' branch to 'main'"
+git branch -m master main
+
+echo -e "\n\nchecking status to make sure we are on 'main' now..."
+git status
+
+# TODO add a check for status before continuing?
+
+echo -e "\n\npushing main to origin"
+git push -u origin main
+
+# this will likely fail, but we'll run it anyway
+echo -e "\n\nattempting to delete 'master'\nNOTE: this will almost certainly fail...\n\n"
+git push origin --delete master
+
+# TODO add a check for status before continuing?
+
+echo -e "\n\nIf you see an error like the following above:"
+echo -e "\n[remote rejected]   master (refusing to delete the current branch: refs/heads/master)"
+echo -e "\nTo continue you need to continue in your repo web UI and set 'main' as the default branch"
+echo -e "Once that is done, re-run the following command:\ngit push origin --delete master"

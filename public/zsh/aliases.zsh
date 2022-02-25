@@ -103,3 +103,6 @@ alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f
 # python3 ftw
 alias python=/usr/local/bin/python3
 alias pip=/usr/local/bin/pip3
+
+# after i figure out a command line trick i want to keep forever
+alias keeper='echo $(history -p !!) >>~/.keeper.txt'

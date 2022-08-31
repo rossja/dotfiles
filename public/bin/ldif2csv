@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+# encoding: utf-8 (as per PEP 263)
+# https://github.com/openemail/csv2ldif2csv
+
+import sys
+import os
+import fileinput
+import base64
+import string
+import csv
+
+SEPARATOR = ';'
+JOINER = '|'
+QUOTECHAR = '"'
+
+"""
+Final structure:
+    dict(
+        uid=doej,ou=people,dc=example: {
+            cn: ['John Doe',],
+            email: ['doej@fim.uni-passau.de', 'johndoe@gmail.com'],
+        }
+"""
+
+class filepeek(object):
+    def __init__(self):
+        self.fi = fileinput.input()
+        try:
+            self.next_elem = self.fi.__next__().rstrip('\n')
+        except StopIteration:
+            self.next_elem = None
+
+    def next(self):
+        elem = self.next_elem
+        try:
+            self.next_elem = self.fi.__next__().rstrip('\n')
+        except StopIteration:
+            self.next_elem = None
+        return elem
+
+    def peek(self):
+        return self.next_elem
+
+def main():
+    data = {}
+    attrs = set()
+    charset = set()
+    current_dn = ''
+    fp = filepeek()
+    while True:
+        line = fp.next()
+        if line is None:
+            break
+
+        if not line:
+            # end of dn block
+            current_dn = ''
+            continue
+
+        if line.lstrip().startswith('#'):
+            # skip comment line
+            continue
+
+        if line.startswith('version: '):
+            # skip version line
+            continue
+
+        key, value = line.split(': ', 1)
+        is_b64 = key.endswith(':')
+        key = key.rstrip(':')
+
+        full_value = value
+        while fp.peek().startswith(' '):
+            full_value += fp.next()[1:]
+
+        if is_b64:
+            full_value = base64.b64decode(full_value)
+
+        attrs.add(key)
+
+        if key == 'dn':
+            current_dn = full_value
+            data[current_dn] = {}
+
+        if not current_dn:
+            raise Exception('Non-dn attribute "%s" while not inside a dn block!' % (key))
+
+        if key not in data[current_dn]:
+            data[current_dn][key] = []
+
+        if len(full_value) < 500:
+            if type(full_value) is bytes:
+                full_value = full_value.decode('utf8')
+
+            store_value = full_value
+
+        else:
+            # too large for CSV output, write to file instead
+
+            # find unused filename
+            fileid = 0
+            while True:
+                filename = 'dn=%s,attr=%s,id=%d' % (current_dn, key, fileid)
+                if not os.path.exists(filename):
+                    break
+                fileid += 1
+
+            with open(filename, 'wb') as f:
+                f.write(full_value)
+
+            store_value = 'FILE=' + filename
+
+        data[current_dn][key] += [store_value]
+        charset.update(set(store_value))
+
+    usable_chars = set(string.printable) - set(string.whitespace)
+    available_chars = usable_chars - charset
+    sys.stderr.write('The following characters DO NOT appear in the dataset (i.e. they can be freely used as separators etc):\n')
+    sys.stderr.write('%s\n' % (' '.join(sorted(available_chars))))
+
+    separator = ';'
+    joiner = '|'
+    strdelimiter = '"'
+
+    attrs = list(sorted(attrs))
+
+    csvwriter = csv.writer(sys.stdout, delimiter=SEPARATOR, quotechar=QUOTECHAR, quoting=csv.QUOTE_ALL)
+
+    csvwriter.writerow(attrs)
+
+    for entry in data:
+        row = []
+        for attr in attrs:
+            content = ''
+            if attr in data[entry]:
+                content = joiner.join(data[entry][attr])
+            row.append(content)
+        csvwriter.writerow(row)
+
+
+if __name__ == '__main__':
+    main()

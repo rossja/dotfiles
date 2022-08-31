@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
 # a stupid script to generate funny quips
 require 'faker'
+
+60.times {
 puts Faker::Hacker.say_something_smart
+}

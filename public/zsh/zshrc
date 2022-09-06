@@ -91,7 +91,7 @@ export JAVA_HOME="/usr/local/opt/openjdk"
 [[ -d $HOME/Library/Android/sdk/build-tools/32.0.0 ]] && export PATH="$HOME/Library/Android/sdk/build-tools/32.0.0:$PATH"
 [[ -d $HOME/Library/Android/sdk/platform-tools ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 [[ -d $HOME/Library/Android/sdk/tools ]] && export PATH="$HOME/Library/Android/sdk/tools:$PATH"
-[[ -d $HOME/Library/Android/sdk/emulator ]] && export PATH="$HOME/Library/Android/sdk/emulator:$PATH"
+[[ -d $HOME/Library/Android/sdk/tools/bin ]] && export PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
 
 # python libs on mac
 [[ -d $HOME/Library/Python/3.9/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.9/bin"
@@ -310,3 +310,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# rust
+[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env

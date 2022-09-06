@@ -54,7 +54,7 @@ alias cdcs="cd $CLIENT_WORK_DIR/src"
 # -------------------------------------------------
 # docker stuff I find useful
 # -------------------------------------------------
-alias di="docker images|sort -n"
+alias di="docker images |sort -n |grep -v REPOSITORY |awk '{print \$1\": \"\$3}'"
 alias dps="docker ps -a"
 # this next bit lets you build a docker image passing in
 # tons of args via a .env file, like so:

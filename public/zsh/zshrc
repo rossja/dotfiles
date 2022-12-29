@@ -313,3 +313,11 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_se
 
 # rust
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
+
+# super tricksy ssl keylog
+#export SSLKEYLOGFILE=~/.ssl-key.log
+
+#export HTTP_PROXY=http://127.0.0.1:8080
+#export HTTPS_PROXY=http://127.0.0.1:8080
+#export http_proxy=http://127.0.0.1:8080
+#export https_proxy=http://127.0.0.1:8080

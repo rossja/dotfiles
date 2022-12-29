@@ -41,6 +41,7 @@ alias privdot="cd $HOME/Documents/dotfiles/private"
 # -------------------------------------------------
 alias yolo='git commit -a -m "$(curl -s https://cb.pe/yolo)" && git push'
 alias guppy='git checkout master && git pull && git checkout json-dev && git pull'
+alias gitid='git rev-parse --short HEAD'
 
 # -------------------------------------------------
 # I hate typing

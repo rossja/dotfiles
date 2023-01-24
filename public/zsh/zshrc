@@ -1,3 +1,6 @@
+# debug
+#zmodload zsh/zprof
+
 # ==================================================
 # set locale
 # ==================================================
@@ -321,3 +324,6 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_se
 #export HTTPS_PROXY=http://127.0.0.1:8080
 #export http_proxy=http://127.0.0.1:8080
 #export https_proxy=http://127.0.0.1:8080
+
+# debug
+#zprof

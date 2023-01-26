@@ -290,8 +290,6 @@ DISABLE_UPDATE_PROMPT=true
 plugins=(
   jsontools
   sudo
-  docker
-  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -1,0 +1,12 @@
+#!/bin/bash
+# -----------------------------------------------------------
+# this is a dirty fix because Docker on Mac OS Ventura keeps
+# getting into a funky state that you either need to reset
+# the entire Docker stack or reboot. Super annoying.
+# All this does is kill -9 all the docker procs via sudo.
+# -----------------------------------------------------------
+
+for pid in $(ps -ef | grep -i docker | grep -v grep | awk '{print $2}')
+do
+  sudo kill -9 ${pid}
+done

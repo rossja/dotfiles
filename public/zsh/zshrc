@@ -327,4 +327,4 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_se
 #zprof
 export PATH=/Users/json/.meteor:$PATH
 
-source /Users/json/.docker/init-zsh.sh || true # Added by Docker Desktop
+[[ -d ~/.docker/init-zsh.sh ]] && source ~/.docker/init-zsh.sh || true

@@ -105,6 +105,9 @@ export JAVA_HOME="/usr/local/opt/openjdk"
 # dotnet
 [[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
 
+# local bin for python ml stuff (among others)
+[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
 # ==================================================
 # dev opts
 # ==================================================

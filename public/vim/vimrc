@@ -38,3 +38,6 @@ au BufReadPost *.pt colorscheme slate2
 
 " ag with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" use the new snipmate
+let g:snipMate = { 'snippet_version' : 1 }

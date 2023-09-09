@@ -27,7 +27,7 @@ alias grepc="grep --color=always"
 [[ -x /usr/local/bin/code ]] && alias edit="/usr/local/bin/code"
 [[ -x /usr/local/bin/code-insiders ]] && alias edit="/usr/local/bin/code-insiders"
 [[ -x /snap/bin/code ]] && alias edit="/snap/bin/code"
-[[ -x /snap/bin/code ]] && alias edit="/snap/bin/code"
+[[ -x /snap/bin/code-insiders ]] && alias edit="/snap/bin/code-insiders"
 [[ -x /usr/local/bin/vscodium ]] && alias edit="/usr/local/bin/vscodium"
 [[ -x /bin/vscodium ]] && alias edit="/bin/vscodium"
 

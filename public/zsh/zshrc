@@ -313,7 +313,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # rust
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
@@ -328,6 +328,6 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_se
 
 # debug
 #zprof
-export PATH=/Users/json/.meteor:$PATH
+export PATH=$HOME/.meteor:$PATH
 
 [[ -d ~/.docker/init-zsh.sh ]] && source ~/.docker/init-zsh.sh || true

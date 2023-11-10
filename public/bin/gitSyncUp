@@ -1,6 +1,6 @@
 #!/bin/bash
 # =================================================================
-# merges the upstream repo with the fork origin/master
+# merges the upstream repo with the fork origin/main
 # this requires that a remote has been configured that
 # points to the upstream repo, and is called "upstream"
 # e.g.: git remote add upstream https://github.com/foo/bar.git

@@ -105,6 +105,9 @@ export JAVA_HOME="/usr/local/opt/openjdk"
 # dotnet
 [[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
 
+# local bin for python ml stuff (among others)
+[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
 # ==================================================
 # dev opts
 # ==================================================
@@ -310,7 +313,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # rust
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
@@ -325,6 +328,12 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/ross.j/Library/Caches/heroku/autocomplete/zsh_se
 
 # debug
 #zprof
-export PATH=/Users/json/.meteor:$PATH
+export PATH=$HOME/.meteor:$PATH
 
 [[ -d ~/.docker/init-zsh.sh ]] && source ~/.docker/init-zsh.sh || true
+
+# openssl3 on mac
+export PATH="/usr/local/opt/openssl@3.0/bin:$PATH"
+#export LDFLAGS="-L/usr/local/opt/openssl@3.0/lib"
+#export CPPFLAGS="-I/usr/local/opt/openssl@3.0/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@3.0/lib/pkgconfig:$PKG_CONFIG_PATH"

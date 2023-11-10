@@ -35,3 +35,9 @@ au Filetype html,xml,xsl source ~/.vim/bundle/closetag/closetag.vim
 
 " make .pt files slate2 colorscheme
 au BufReadPost *.pt colorscheme slate2
+
+" ag with ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" use the new snipmate
+let g:snipMate = { 'snippet_version' : 1 }

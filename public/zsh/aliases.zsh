@@ -26,6 +26,8 @@ alias grepc="grep --color=always"
 # -------------------------------------------------
 [[ -x /usr/local/bin/code ]] && alias edit="/usr/local/bin/code"
 [[ -x /usr/local/bin/code-insiders ]] && alias edit="/usr/local/bin/code-insiders"
+[[ -x /snap/bin/code ]] && alias edit="/snap/bin/code"
+[[ -x /snap/bin/code-insiders ]] && alias edit="/snap/bin/code-insiders"
 [[ -x /usr/local/bin/vscodium ]] && alias edit="/usr/local/bin/vscodium"
 [[ -x /bin/vscodium ]] && alias edit="/bin/vscodium"
 
@@ -102,8 +104,10 @@ alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f
 #fi
 
 # python3 ftw
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
+[[ -f /usr/local/bin/python3 ]] && alias python=/usr/local/bin/python3
+[[ -f /usr/local/bin/pip3 ]] && alias pip=/usr/local/bin/pip3
+[[ -f /usr/bin/python3 ]] && alias python=/usr/bin/python3
+[[ -f /usr/bin/pip3 ]] && alias pip=/usr/bin/pip3
 
 # after i figure out a command line trick i want to keep forever
 alias keeper='echo $(history -p !!) >>~/.keeper.txt'

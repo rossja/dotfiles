@@ -1,0 +1,1 @@
+/home/json/src/dotfiles/public/zsh/zsh.d

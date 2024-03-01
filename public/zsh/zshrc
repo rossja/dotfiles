@@ -131,6 +131,19 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source "/usr/local/bin/virtualenvwrapper_lazy.sh"
 fi
 
+# homebrew paths
+# this should work, but doesn't (on macbook m3 pro)
+# because it looks like shellenv returns mangled PATH/MANPATH output
+#eval $(/opt/homebrew/bin/brew shellenv)
+#
+# so just hardcode it (fixing the badly mangled bits):
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
+export INFOPATH="/opt/homebrew/share/info:$INFOPATH"
+
 # prefer gnu getopt
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 

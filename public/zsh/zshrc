@@ -98,10 +98,15 @@ export JAVA_HOME="/usr/local/opt/openjdk"
 [[ -d $HOME/Library/Android/sdk/tools/bin ]] && export PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
 
 # python libs on mac
-[[ -d $HOME/Library/Python/3.9/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.9/bin"
-[[ -d $HOME/Library/Python/3.8/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.8/bin"
-[[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
-[[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+#[[ -d $HOME/Library/Python/3.9/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+#[[ -d $HOME/Library/Python/3.8/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+#[[ -d $HOME/Library/Python/3.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+#[[ -d $HOME/Library/Python/2.7/bin ]] && export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+
+# use pyenv to manage python
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
 
 # dotnet
 [[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:$PATH"
@@ -122,14 +127,14 @@ export GOPATH="$HOME/src/golang"
 [[ -d $GOPATH ]] && export PATH="$GOPATH/bin:$PATH"
 
 # python virtualenvwrapper
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME="$HOME/.virtualenvs"
-    export PROJECT_HOME="$HOME/src/python"
-    export VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
-    # use python3 as the virtualenv default
-    export VIRTUALENVWRAPPER_PYTHON=python3
-    [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source "/usr/local/bin/virtualenvwrapper_lazy.sh"
-fi
+#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+#    export WORKON_HOME="$HOME/.virtualenvs"
+#    export PROJECT_HOME="$HOME/src/python"
+#    export VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
+#    # use python3 as the virtualenv default
+#    export VIRTUALENVWRAPPER_PYTHON=python3
+#    [[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source "/usr/local/bin/virtualenvwrapper_lazy.sh"
+#fi
 
 # homebrew paths
 # this should work, but doesn't (on macbook m3 pro)
@@ -173,6 +178,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 
 # prefer openjdk
 [[ -d "/usr/local/opt/openjdk@8/include" ]] && export CPPFLAGS="-I/usr/local/opt/openjdk@8/include:$CPPFLAGS"
@@ -351,3 +357,6 @@ export PATH="/usr/local/opt/openssl@3.0/bin:$PATH"
 #export LDFLAGS="-L/usr/local/opt/openssl@3.0/lib"
 #export CPPFLAGS="-I/usr/local/opt/openssl@3.0/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@3.0/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# Load custom aliases
+if [ -f "/Users/ross.j/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/ross.j/.config/fabric/fabric-bootstrap.inc"; fi

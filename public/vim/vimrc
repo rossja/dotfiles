@@ -1,12 +1,3 @@
-" pathogen lets us manage vim plugins better
-" to install it:
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" then install plugins to ~/.vim/bundle/<plugindir>
-execute pathogen#infect()
-filetype plugin indent on
-syntax on
-
 set nocompatible
 set incsearch
 set nu
@@ -29,15 +20,3 @@ set pastetoggle=<F10>
 
 " removes trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-" load the closetag plugin
-au Filetype html,xml,xsl source ~/.vim/bundle/closetag/closetag.vim
-
-" make .pt files slate2 colorscheme
-au BufReadPost *.pt colorscheme slate2
-
-" ag with ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" use the new snipmate
-let g:snipMate = { 'snippet_version' : 1 }

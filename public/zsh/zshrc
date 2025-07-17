@@ -60,6 +60,9 @@ autoload docker-killall docker-rmstale docker-rmvols docker-update-images
 autoload -U compinit
 compinit
 
+# I HATE APPLE TAR
+export COPYFILE_DISABLE=1
+
 # ==================================================
 # set up PATH
 # ==================================================
@@ -374,3 +377,24 @@ if [ -f "/Users/ross.j/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/ro
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+. "$HOME/.local/bin/env"
+
+# source python venv in either the current dir or $HOME, in that order of preference
+# thx to script_sibi:
+# https://www.reddit.com/r/learnpython/comments/1ffyg3v/uv_setting_preferredglobal_python_version/?rdt=63898
+if [[ -d ".venv" ]]; then
+    # If .venv exists in the current directory, activate it
+    source .venv/bin/activate
+else
+    # Otherwise, activate the global virtual environment at ~/.venv
+    if [[ -d "$HOME/.venv" ]]; then
+        source "$HOME/.venv/bin/activate"
+    else
+        echo "No python venv found in .venv or ~/.venv"
+    fi
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

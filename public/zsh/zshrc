@@ -372,9 +372,6 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@3.0/lib/pkgconfig:$PKG_CONFIG_PAT
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
-# Load custom aliases
-if [ -f "/Users/ross.j/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/ross.j/.config/fabric/fabric-bootstrap.inc"; fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

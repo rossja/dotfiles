@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# fixMacGatekeeper: manage Gatekeeper trust for CLI binaries on macOS
+#   -q : remove quarantine attribute (default)
+#   -t : add binary to TrustedTools label using spctl
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: $(basename "$0") [-q | -t] /path/to/binary"
+    echo "  -q    Remove quarantine attribute from binary (default)"
+    echo "  -t    Add binary to spctl TrustedTools label"
+    exit 1
+}
+
+# --- Parse args ---
+mode="-q"
+
+if [[ "$#" -eq 1 ]]; then
+    app="$1"
+elif [[ "$#" -eq 2 ]]; then
+    mode="$1"
+    app="$2"
+else
+    echo "Error: invalid arguments"
+    usage
+fi
+
+if [[ ! -f "$app" ]]; then
+    echo "Error: '$app' is not a file"
+    exit 1
+fi
+
+case "$mode" in
+    -q)
+        # Remove quarantine flag to bypass first-run Gatekeeper prompt
+        xattr -d com.apple.quarantine "$app" 2>/dev/null || {
+            echo "Note: quarantine attribute not set on $app (nothing to remove)"
+        }
+        echo "✅ Quarantine attribute removed: $app"
+        ;;
+    -t)
+        # Add binary to a custom spctl label. This allows execution without disabling Gatekeeper.
+        sudo spctl --add --label "TrustedTools" "$app"
+        sudo spctl --enable --label "TrustedTools"
+        echo "✅ Binary added to spctl TrustedTools label: $app"
+        ;;
+    *)
+        echo "Error: unknown option '$mode'"
+        usage
+        ;;
+esac
+

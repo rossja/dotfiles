@@ -110,3 +110,6 @@ alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f
 
 # after i figure out a command line trick i want to keep forever
 alias keeper='echo $(history -p !!) >>~/.keeper.txt'
+
+# ag with ignore
+alias agi='ag --ignore test --ignore node_modules --ignore lib --ignore test --ignore shared-labels-std --ignore shared-labels --ignore tests --ignore __tests__ --ignore mocks'

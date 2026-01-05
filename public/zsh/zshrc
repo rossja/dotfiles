@@ -1,14 +1,14 @@
-[[ -f $HOME/.bootstrap_rc ]] && source $HOME/.bootstrap_rc
+[[ -f ${HOME}/.bootstrap_rc ]] && source ${HOME}/.bootstrap_rc
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of $HOME/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+## Enable Powerlevel10k instant prompt. Should stay close to the top of ${HOME}/.zshrc.
+## Initialization code that may require console input (password prompts, [y/n]
+## confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-# use this to debug performance
-#zmodload zsh/zprof
+# enable this to debug performance
+# zmodload zsh/zprof
 
 # ==================================================
 # set locale
@@ -17,30 +17,30 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # set zsh home to oh-my-zsh if it's installed
-[[ -d $HOME/.oh-my-zsh ]] && ZSH="$HOME/.oh-my-zsh"
+[[ -d ${HOME}/.oh-my-zsh ]] && export ZSH="${HOME}/.oh-my-zsh"
 
 # ==================================================
 # General Config
 # ==================================================
 # source aliases if one exists
-[[ -f $HOME/.aliases.zsh ]] && . $HOME/.aliases.zsh
+[[ -f ${HOME}/.aliases.zsh ]] && . ${HOME}/.aliases.zsh
 
 # disable compfix
-ZSH_DISABLE_COMPFIX=true
+export ZSH_DISABLE_COMPFIX=true
 
 # kill the inverse % on non-terminated end of line
-PROMPT_EOL_MARK=""
+export PROMPT_EOL_MARK=""
 
 # default editor
-EDITOR="vim"
+export EDITOR="vim"
 
 # set the function path
-fpath=("$HOME/.zsh.d" "${fpath[@]}")
-fpath=($fpath $HOME/.zsh/completion)
+export fpath=("${HOME}/.zsh.d" "${fpath[@]}")
+export fpath=(${fpath} ${HOME}/.zsh/completion)
 
 # get the homebrew zsh completions for hub
 if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-  fpath=/usr/local/share/zsh/site-functions:$FPATH
+  export fpath=/usr/local/share/zsh/site-functions:$fpath
 fi
 
 # ignore commands that start with a space
@@ -58,91 +58,112 @@ compinit
 # I HATE APPLE TAR
 # if this is set, tar will not include the extended attributes
 # of the files in the archive
-COPYFILE_DISABLE=1
+export COPYFILE_DISABLE=1
 
 # ==================================================
 # set up PATH
 # ==================================================
+
+# =====================================================
+# homebrew paths
+# =====================================================
+
+# this eval statement should work, but doesn't (on macbook m3 pro)
+# because it looks like shellenv returns mangled PATH/MANPATH output
+# so we fall back to hardcoding the paths if the eval statement fails
+if ! eval $(/opt/homebrew/bin/brew shellenv); then
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    export PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH}"
+    export MANPATH="${HOMEBREW_PREFIX}/share/man:${MANPATH}"
+    export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH}"
+fi
+
+# =====================================================
+# system paths
+# =====================================================
+
 # all your base...
-PATH="/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
+export PATH="${PATH}:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
 
 # snapcraft on linux
-[[ -d  /snap/bin ]] && PATH="${PATH}:/snap/bin"
+[[ -d  /snap/bin ]] && export PATH="/snap/bin:${PATH}"
 
 # coreutils
 if [ -d /usr/local/opt/coreutils ]; then
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
-
 # krew
-[[ -d $HOME/.krew ]] && PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+[[ -d ${HOME}/.krew ]] && export PATH="${KREW_ROOT:-${HOME}/.krew}/bin:${PATH}"
 
 # mactex
-[[ -d /usr/local/texlive/2023/bin/x86_64-darwin ]] && PATH="/usr/local/texlive/2023/bin/x86_64-darwin:$PATH"
-[[ -d /usr/local/texlive/2023/bin/universal-darwin ]] && PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
+export TEXROOT=/usr/local/texlive/2023/bin/universal-darwin
+[[ -d ${TEXROOT} ]] && export PATH="${TEXROOT}:${PATH}"
 
 # android studio
-[[ -d $HOME/Library/Android/sdk/build-tools/32.0.0 ]] && PATH="$HOME/Library/Android/sdk/build-tools/32.0.0:$PATH"
-[[ -d $HOME/Library/Android/sdk/platform-tools ]] && PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-[[ -d $HOME/Library/Android/sdk/tools ]] && PATH="$HOME/Library/Android/sdk/tools:$PATH"
-[[ -d $HOME/Library/Android/sdk/tools/bin ]] && PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
+[[ -d ${HOME}/Library/Android/sdk/build-tools/32.0.0 ]] && export PATH="${HOME}/Library/Android/sdk/build-tools/32.0.0:${PATH}"
+[[ -d ${HOME}/Library/Android/sdk/platform-tools ]] && export PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
+[[ -d ${HOME}/Library/Android/sdk/tools ]] && export PATH="${HOME}/Library/Android/sdk/tools:${PATH}"
+[[ -d ${HOME}/Library/Android/sdk/tools/bin ]] && export PATH="${HOME}/Library/Android/sdk/tools/bin:${PATH}"
+
+# local bin for python ml stuff (among others)
+[[ -d ${HOME}/.local/bin ]] && export PATH="${PATH}:${HOME}/.local/bin"
+
+# golang
+if [ -d /usr/local/opt/go/ ]; then
+    export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
+    export GOROOT="/usr/local/opt/go/libexec/"
+fi
+export GOPATH="${HOME}/src/golang"
+[[ -d ${GOPATH} ]] && export PATH="${GOPATH}/bin:${PATH}"
+
+# prefer gnu getopt
+[[ -d /usr/local/opt/gnu-getopt/bin ]] && export PATH="/usr/local/opt/gnu-getopt/bin:${PATH}"
 
 
 # ==================================================
 # dev opts
 # ==================================================
 
-# local bin for python ml stuff (among others)
-[[ -d $HOME/.local/bin ]] && PATH="$PATH:$HOME/.local/bin"
 
-# golang
-if [ -d /usr/local/opt/go/ ]; then
-    PATH="$PATH:/usr/local/opt/go/libexec/bin"
-    GOROOT="/usr/local/opt/go/libexec/"
-fi
-GOPATH="$HOME/src/golang"
-[[ -d $GOPATH ]] && PATH="$GOPATH/bin:$PATH"
-
-# prefer gnu getopt
-PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-
-# prefer gnu readline
-LDFLAGS="-L/usr/local/opt/readline/lib $LDFLAGS"
-CPPFLAGS="-I/usr/local/opt/readline/include $CPPFLAGS"
-PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# prefer brew mysql
-PATH="/usr/local/opt/mysql-client/bin:$PATH"
-LDFLAGS="-L/usr/local/opt/mysql-client/lib $LDFLAGS"
-CPPFLAGS="-I/usr/local/opt/mysql-client/include $CPPFLAGS"
-PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# prefer brew sqlite
-PATH="/usr/local/opt/sqlite/bin:$PATH"
-LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
-CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
-PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# prefer brew openblas
-LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
-CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
-PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# prefer brew openssl (over Apple's TLS libs)
-PATH="/usr/local/opt/openssl/bin:$PATH"
-LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
-CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
-PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+## prefer gnu readline
+#export LDFLAGS="-L/usr/local/opt/readline/lib $LDFLAGS"
+#export CPPFLAGS="-I/usr/local/opt/readline/include $CPPFLAGS"
+#export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
+#
+## prefer brew mysql
+#export PATH="/usr/local/opt/mysql-client/bin:${PATH}"
+#export LDFLAGS="-L/usr/local/opt/mysql-client/lib $LDFLAGS"
+#export CPPFLAGS="-I/usr/local/opt/mysql-client/include $CPPFLAGS"
+#export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
+#
+## prefer brew sqlite
+#export PATH="/usr/local/opt/sqlite/bin:${PATH}"
+#export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
+#export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
+#export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
+#
+## prefer brew openblas
+#export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
+#export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+#export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
+#
+## prefer brew openssl (over Apple's TLS libs)
+#export PATH="/usr/local/opt/openssl/bin:${PATH}"
+#export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
+#export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+#export PATH="/opt/homebrew/opt/openssl@1.1/bin:${PATH}"
 
 # openjdk
-[[ -d "/usr/local/opt/openjdk@8/include" ]] && CPPFLAGS="-I/usr/local/opt/openjdk@8/include:$CPPFLAGS"
+[[ -d "/usr/local/opt/openjdk@8/include" ]] && export CPPFLAGS="-I/usr/local/opt/openjdk@8/include:$CPPFLAGS"
 
 # dotnet
-[[ -d /usr/local/share/dotnet ]] && PATH="/usr/local/share/dotnet:$PATH"
+[[ -d /usr/local/share/dotnet ]] && export PATH="/usr/local/share/dotnet:${PATH}"
 # opt out of dotnet telemetry
-DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # gcloud
 [[ -d /usr/local/Caskroom/google-cloud-sdk/lagtest/google-cloud-sdk ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -151,138 +172,123 @@ DOTNET_CLI_TELEMETRY_OPTOUT=1
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+export HEROKU_AC_ZSH_SETUP_PATH=${HOME}/Library/Caches/heroku/autocomplete/zsh_setup
+[[ -f ${HEROKU_AC_ZSH_SETUP_PATH} ]] && source ${HEROKU_AC_ZSH_SETUP_PATH}
 
 # rust
-[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
-
-
-# =====================================================
-# homebrew paths
-# =====================================================
-
-# this should work, but doesn't (on macbook m3 pro)
-# because it looks like shellenv returns mangled PATH/MANPATH output
-#eval $(/opt/homebrew/bin/brew shellenv)
-#
-# so just hardcode it (fixing the badly mangled bits):
-HOMEBREW_PREFIX="/opt/homebrew"
-HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-HOMEBREW_REPOSITORY="/opt/homebrew"
-PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-MANPATH="/opt/homebrew/share/man:$MANPATH"
-INFOPATH="/opt/homebrew/share/info:$INFOPATH"
+[[ -f ${HOME}/.cargo/env ]] && source ${HOME}/.cargo/env
 
 
 # ==================================================
 # Compiler Settings
 # ==================================================
-ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch x86_64"
 
 # ==================================================
 # docker things
 # ==================================================
-DOCKER_CONTENT_TRUST=1
-[[ -d $HOME/.docker/init-zsh.sh ]] && source $HOME/.docker/init-zsh.sh || true
+export DOCKER_CONTENT_TRUST=1
+[[ -f ${HOME}/.docker/init-zsh.sh ]] && source ${HOME}/.docker/init-zsh.sh || true
 
 # ==================================================
 # Prompt Magic
 # THIS SHELL'S POWER IS > 9000!
 # ==================================================
-ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-#POWERLEVEL9K_MODE="nerdfont-complete"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
+#export ZSH_THEME="powerlevel9k/powerlevel9k"
+#export POWERLEVEL9K_MODE="nerdfont-complete"
 
 ## configure general options
-#COMPLETION_WAITING_DOTS="true"
-#DISABLE_UNTRACKED_FILES_DIRTY="true"
-#ENABLE_CORRECTION="true"
-#HIST_STAMPS="yyyy-mm-dd"
-#HYPHEN_INSENSITIVE="true"
+#export COMPLETION_WAITING_DOTS="true"
+#export COMPLETION_WAITING_DOTS="true"
+#export DISABLE_UNTRACKED_FILES_DIRTY="true"
+#export ENABLE_CORRECTION="true"
+#export HIST_STAMPS="yyyy-mm-dd"
+#export HYPHEN_INSENSITIVE="true"
 #
 ## set up some custom glyphs
-#ELLIPSIS="\u2026"
-#GIT_BRANCH_ICON="\uf126"
+#export ELLIPSIS="\u2026"
+#export GIT_BRANCH_ICON="\uf126"
 ##USER_ICON="\uf2be"
-USER_ICON="💀"
-#ROOT_ICON="\uf292"
-#BIG_ARROW="\ue0b1"
-##SMALL_ARROW="\uf105"
-#SMALL_ARROW=">"
-#UP_ARROW_HOOK="\u27a6"
-#DOWN_ARROW_HOOK="\u27a5"
-#LEFT_ARROW_HOOK="\u21a9"
-#RIGHT_ARROW_HOOK="\u21aa"
-#BRACKET_OPEN="\uff3b"
-#BRACKET_CLOSE="\uff3d"
+export USER_ICON="💀"
+#export ROOT_ICON="\uf292"
+#export BIG_ARROW="\ue0b1"
+#export SMALL_ARROW="\uf105"
+#export SMALL_ARROW=">"
+#export UP_ARROW_HOOK="\u27a6"
+#export DOWN_ARROW_HOOK="\u27a5"
+#export LEFT_ARROW_HOOK="\u21a9"
+#export RIGHT_ARROW_HOOK="\u21aa"
+#export BRACKET_OPEN="\uff3b"
+#export BRACKET_CLOSE="\uff3d"
 #
 ## set up custom prompt elements
-#custom_hourglass="echo \uf253"
+#export custom_hourglass="echo \uf253"
 #
 ## color settings
-#POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="grey"
-#POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="white"
-#POWERLEVEL9K_COLOR_SCHEME="dark"
-#POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="grey"
-#POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="white"
-#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="black"
-#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="white"
-#POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
-#POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="white"
-#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="blue"
-#POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
-#POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="blue"
-#POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD="true"
-#POWERLEVEL9K_DIR_PATH_HIGHLIGHT_FOREGROUND="white"
-#POWERLEVEL9K_DIR_PATH_SEPARATOR_FOREGROUND="black"
-#POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="red"
-#POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="red"
-#POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND="white"
-#POWERLEVEL9K_STATUS_ERROR_BACKGROUND="red"
-#POWERLEVEL9K_STATUS_ERROR_FOREGROUND="white"
-#POWERLEVEL9K_STATUS_OK_BACKGROUND="white"
-#POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-#POWERLEVEL9K_TIME_BACKGROUND="white"
-#POWERLEVEL9K_TIME_FOREGROUND="black"
+#export POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="grey"
+#export POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="white"
+#export POWERLEVEL9K_COLOR_SCHEME="dark"
+#export POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="grey"
+#export POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="white"
+#export POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="black"
+#export POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="white"
+#export POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
+#export POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="white"
+#export POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="clear"
+#export POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="blue"
+#export POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
+#export POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+#export POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
+#export POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="blue"
+#export POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD="true"
+#export POWERLEVEL9K_DIR_PATH_HIGHLIGHT_FOREGROUND="white"
+#export POWERLEVEL9K_DIR_PATH_SEPARATOR_FOREGROUND="black"
+#export POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="clear"
+#export POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="red"
+#export POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="red"
+#export POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND="white"
+#export POWERLEVEL9K_STATUS_ERROR_BACKGROUND="red"
+#export POWERLEVEL9K_STATUS_ERROR_FOREGROUND="white"
+#export POWERLEVEL9K_STATUS_OK_BACKGROUND="white"
+#export POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
+#export POWERLEVEL9K_TIME_BACKGROUND="white"
+#export POWERLEVEL9K_TIME_FOREGROUND="black"
 #
 ## override default formats
-#POWERLEVEL9K_TIME_FORMAT="\uf455 %D{%m-%d-%y %H:%M}"
+#export POWERLEVEL9K_TIME_FORMAT="\uf455 %D{%m-%d-%y %H:%M}"
 #
 ## override default separators
-#POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER="false"
-#POWERLEVEL9K_DIR_PATH_SEPARATOR="|"
-#POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
-#POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=""
-#POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
-#POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=""
+#export POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER="false"
+#export POWERLEVEL9K_DIR_PATH_SEPARATOR="|"
+#export POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
+#export POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=""
+#export POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
+#export POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=""
 #
 ## configure directory shortening strategies
-#POWERLEVEL9K_SHORTEN_DELIMITER="$ELLIPSIS"
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+#export POWERLEVEL9K_SHORTEN_DELIMITER="$ELLIPSIS"
+#export POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+#export POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 #
 ## set misc vars for various elements
-#POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
-#POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-#POWERLEVEL9K_CONTEXT_TEMPLATE="$USER_ICON `hostname -s`"
-#POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-#POWERLEVEL9K_VCS_BRANCH_ICON="$GIT_BRANCH_ICON "
+#export POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
+#export POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+#export POWERLEVEL9K_CONTEXT_TEMPLATE="$USER_ICON `hostname -s`"
+#export POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+#export POWERLEVEL9K_VCS_BRANCH_ICON="$GIT_BRANCH_ICON "
 #
 ## multiline settings
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$SMALL_ARROW"
-#POWERLEVEL9K_PROMPT_ON_NEWLINE="true"
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE="false"
+#export POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+#export POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$SMALL_ARROW"
+#export POWERLEVEL9K_PROMPT_ON_NEWLINE="true"
+#export POWERLEVEL9K_RPROMPT_ON_NEWLINE="false"
 #
 ## set the prompt
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline dir vcs)
+#export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline dir vcs)
 
-# To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ${HOME}/.p10k.zsh.
+[[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh
 
 
 # ==================================================
@@ -290,18 +296,18 @@ USER_ICON="💀"
 # ==================================================
 
 # update omz automatically
-DISABLE_UPDATE_PROMPT=true
+export DISABLE_UPDATE_PROMPT=true
 
-plugins=(
+export plugins=(
   jsontools
   sudo
 )
 
-source $ZSH/oh-my-zsh.sh
-source $ZSH/plugins/calc/calc.plugin.zsh
+source ${ZSH}/oh-my-zsh.sh
+source ${ZSH}/plugins/calc/calc.plugin.zsh
 
 # super tricksy ssl keylog
-#export SSLKEYLOGFILE=$HOME/.ssl-key.log
+#export SSLKEYLOGFILE=${HOME}/.ssl-key.log
 
 #export HTTP_PROXY=http://127.0.0.1:8080
 #export HTTPS_PROXY=http://127.0.0.1:8080
@@ -312,23 +318,23 @@ source $ZSH/plugins/calc/calc.plugin.zsh
 # ==================================================
 # local bin env
 # ==================================================
-[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
+[[ -f "${HOME}/.local/bin/env" ]] && source "${HOME}/.local/bin/env"
 
 # ==================================================
 # python venv
 # ==================================================
-# source python venv in either the current dir or $HOME, in that order of preference
+# source python venv in either the current dir or ${HOME}, in that order of preference
 # thx to script_sibi:
 # https://www.reddit.com/r/learnpython/comments/1ffyg3v/uv_setting_preferredglobal_python_version/?rdt=63898
 if [[ -d ".venv" ]]; then
     # If .venv exists in the current directory, activate it
     source .venv/bin/activate
 else
-    # Otherwise, activate the global virtual environment at $HOME/.venv
-    if [[ -d "$HOME/.venv" ]]; then
-        source "$HOME/.venv/bin/activate"
+    # Otherwise, activate the global virtual environment at ${HOME}/.venv
+    if [[ -d "${HOME}/.venv" ]]; then
+        source "${HOME}/.venv/bin/activate"
     else
-        echo "No python venv found in .venv or $HOME/.venv"
+        echo "No python venv found in .venv or ${HOME}/.venv"
     fi
 fi
 
@@ -338,37 +344,10 @@ fi
 # my own stuff overrides everything else
 # ==================================================
 # source the private configs if they exist
-[[ -f $HOME/.zshrc.priv ]] && . $HOME/.zshrc.priv
-[[ -f $HOME/.aliases.zsh.priv ]] && . $HOME/.aliases.zsh.priv
+[[ -f ${HOME}/.zshrc.priv ]] && . ${HOME}/.zshrc.priv
+[[ -f ${HOME}/.aliases.zsh.priv ]] && . ${HOME}/.aliases.zsh.priv
 
 # make sure my own bin is in the path first
-[[ -d "$HOME/src/bin" ]] && PATH="$HOME/src/bin:$PATH"
-[[ -d "$HOME/src/dotfiles/public/bin" ]] && PATH="$HOME/src/dotfiles/public/bin:$PATH"
-[[ -d "$HOME/src/dotfiles/private/bin" ]] && PATH="$HOME/src/dotfiles/private/bin:$PATH"
-
-
-# ==================================================
-# export everything
-# ==================================================
-export ARCHFLAGS
-export COPYFILE_DISABLE
-export CPPFLAGS
-export DOCKER_CONTENT_TRUST
-export EDITOR
-export GOPATH
-export GOPATH
-export GOROOT
-export HOMEBREW_CELLAR
-export HOMEBREW_PREFIX
-export HOMEBREW_REPOSITORY
-export INFOPATH
-export LDFLAGS
-export MANPATH
-export PATH
-export PKG_CONFIG_PATH
-export PROMPT_COMMAND
-export PROMPT_DIRTRIM
-export PROMPT_EOL_MARK
-export ZSH
-export ZSH_DISABLE_COMPFIX
-export ZSH_THEME
+[[ -d "${HOME}/src/bin" ]] && export PATH="${HOME}/src/bin:${PATH}"
+[[ -d "${HOME}/src/dotfiles/public/bin" ]] && export PATH="${HOME}/src/dotfiles/public/bin:${PATH}"
+[[ -d "${HOME}/src/dotfiles/private/bin" ]] && export PATH="${HOME}/src/dotfiles/private/bin:${PATH}"

@@ -104,10 +104,14 @@ export TEXROOT=/usr/local/texlive/2023/bin/universal-darwin
 [[ -d ${TEXROOT} ]] && export PATH="${TEXROOT}:${PATH}"
 
 # android studio
-[[ -d ${HOME}/Library/Android/sdk/build-tools/32.0.0 ]] && export PATH="${HOME}/Library/Android/sdk/build-tools/32.0.0:${PATH}"
-[[ -d ${HOME}/Library/Android/sdk/platform-tools ]] && export PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
-[[ -d ${HOME}/Library/Android/sdk/tools ]] && export PATH="${HOME}/Library/Android/sdk/tools:${PATH}"
-[[ -d ${HOME}/Library/Android/sdk/tools/bin ]] && export PATH="${HOME}/Library/Android/sdk/tools/bin:${PATH}"
+ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
+ANDROID_SDK_VERSION=36.1.0
+[[ -d ${ANDROID_SDK_ROOT}/emulator ]] && export PATH="${ANDROID_SDK_ROOT}/emulator:${PATH}"
+[[ -d ${ANDROID_SDK_ROOT}/build-tools/${ANDROID_SDK_VERSION} ]] && export PATH="${ANDROID_SDK_ROOT}/build-tools/${ANDROID_SDK_VERSION}:${PATH}"
+[[ -d ${ANDROID_SDK_ROOT}/cmdline-tools/latest ]] && export PATH="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${PATH}"
+[[ -d ${ANDROID_SDK_ROOT}/platform-tools ]] && export PATH="${ANDROID_SDK_ROOT}/platform-tools:${PATH}"
+[[ -d ${ANDROID_SDK_ROOT}/tools ]] && export PATH="${ANDROID_SDK_ROOT}/tools:${PATH}"
+[[ -d ${ANDROID_SDK_ROOT}/tools/bin ]] && export PATH="${ANDROID_SDK_ROOT}/tools/bin:${PATH}"
 
 # local bin for python ml stuff (among others)
 [[ -d ${HOME}/.local/bin ]] && export PATH="${PATH}:${HOME}/.local/bin"

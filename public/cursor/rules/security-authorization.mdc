@@ -1,0 +1,49 @@
+# Authorization Security
+
+## Authorization Principles
+
+- **Principle of least privilege**: Grant minimum necessary permissions
+- **Separation of duties**: Divide sensitive operations across multiple users
+- **Need-to-know basis**: Restrict access to information based on job requirements
+- **Regular access reviews**: Periodically review and update user permissions
+- **Zero trust model**: Verify every request as if it originates from an untrusted network
+
+## Access Control Models
+
+- **Role-based access control (RBAC)**: Implement clearly defined roles and permissions
+- **Attribute-based access control (ABAC)**: Use attributes for dynamic authorization decisions
+- **Mandatory access control (MAC)**: Enforce system-level access policies
+- **Discretionary access control (DAC)**: Allow resource owners to control access
+- **Rule-based access control**: Use conditional rules for access decisions
+
+## Resource Protection
+
+- **Resource-level permissions**: Check authorization for each protected resource
+- **Operation-level security**: Authorize specific actions (read, write, delete, execute)
+- **Dynamic authorization**: Re-evaluate permissions for sensitive operations
+- **Context-aware authorization**: Consider time, location, device in access decisions
+- **Hierarchical permissions**: Implement parent-child resource relationships
+
+## Authorization Implementation
+
+- **Centralized authorization**: Use consistent authorization mechanisms across systems
+- **Policy decision points**: Implement clear authorization decision logic
+- **Policy enforcement points**: Ensure authorization is checked at all access points
+- **Permission inheritance**: Handle permission inheritance properly
+- **Default deny**: Implement secure defaults that deny access by default
+
+## CSRF & State Management
+
+- **CSRF protection**: Implement anti-CSRF tokens for state-changing operations
+- **State validation**: Verify state parameters in authorization flows
+- **Secure redirects**: Validate redirect URLs to prevent open redirects
+- **Referrer validation**: Check referrer headers for sensitive operations
+- **Same-origin verification**: Enforce same-origin policies where appropriate
+
+## Authorization Monitoring
+
+- **Access pattern monitoring**: Track unusual access patterns or privilege escalation
+- **Permission changes**: Log all permission modifications
+- **Failed authorization attempts**: Monitor and alert on authorization failures
+- **Privilege usage tracking**: Monitor use of high-privilege operations
+- **Access audit trails**: Maintain detailed logs of all access decisions

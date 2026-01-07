@@ -1,0 +1,146 @@
+# Security Overview & Guidelines
+
+## Purpose of This File
+
+This file provides high-level security principles and helps determine which specific security rule files are most relevant for different types of development work.
+
+## When to Apply Specific Security Files
+
+### For API Development (security-api.mdc)
+- Building REST APIs, GraphQL endpoints, or microservices
+- Implementing API gateways or service meshes
+- Working on machine-to-machine communication
+- Developing webhook handlers or API integrations
+
+### For Web Applications (security-web.mdc)
+- Building traditional web applications with user interfaces
+- Working with forms, user sessions, and browser interactions
+- Implementing Single Page Applications (SPAs)
+- Developing Progressive Web Apps (PWAs)
+
+### For Authentication Systems (security-authentication.mdc)
+- Implementing login/logout functionality
+- Working with passwords, MFA, or biometric authentication
+- Building OAuth/OpenID Connect providers or consumers
+- Managing user sessions and tokens
+
+### For Authorization Systems (security-authorization.mdc)
+- Implementing role-based or attribute-based access control
+- Building permission systems or policy engines
+- Working with resource-level access controls
+- Developing privilege escalation protections
+
+### For Data Handling (security-data-protection.mdc)
+- Working with sensitive data, PII, or payment information
+- Implementing encryption at rest or in transit
+- Building key management systems
+- Handling data privacy and GDPR compliance
+
+### For Input Processing (security-input-validation.mdc)
+- Processing user input, form data, or file uploads
+- Building search functionality or content filters
+- Working with parsers (JSON, XML, CSV)
+- Implementing data transformation pipelines
+
+### For Error Handling (security-error-handling.mdc)
+- Implementing exception handling and error recovery
+- Building custom error pages or responses
+- Working on debugging and troubleshooting features
+- Developing graceful degradation mechanisms
+
+### For Logging Systems (security-logging.mdc)
+- Implementing application logging or audit trails
+- Building log aggregation or analysis systems
+- Working on security monitoring dashboards
+- Developing incident response tools
+
+### For Information Security (security-info-disclosure.mdc)
+- Implementing system information protection
+- Working on production deployments and configurations
+- Building admin interfaces or debug endpoints
+- Developing system monitoring or health checks
+
+### For Security Monitoring (security-monitoring.mdc)
+- Building security dashboards or alerting systems
+- Implementing intrusion detection or anomaly detection
+- Working on security incident response tools
+- Developing threat intelligence integration
+
+### For Code & Dependencies (security-dependencies.mdc)
+- Managing third-party libraries and dependencies
+- Implementing build pipelines or CI/CD systems
+- Working on code analysis or security scanning
+- Developing containerized applications
+
+## Universal Security Principles
+
+Regardless of the specific domain, always consider these fundamental principles:
+
+### Defense in Depth
+- Implement multiple layers of security controls
+- Don't rely on a single security measure
+- Assume each layer can be bypassed and plan accordingly
+
+### Principle of Least Privilege
+- Grant minimum necessary permissions
+- Regularly review and reduce access levels
+- Implement just-in-time access where possible
+
+### Security by Design
+- Consider security implications from the beginning
+- Build security into the architecture, not bolt it on later
+- Perform threat modeling during design phase
+
+### Fail Securely
+- Ensure failures result in a secure state
+- Default to denying access when systems fail
+- Implement graceful degradation with security maintained
+
+### Keep It Simple
+- Complex security systems are harder to secure
+- Prefer standard, well-tested solutions over custom implementations
+- Avoid security through obscurity
+
+## Cross-Cutting Concerns
+
+Some security aspects span multiple files and should always be considered:
+
+### Encryption Everywhere
+- Encrypt data in transit (HTTPS, TLS)
+- Encrypt data at rest (database, file storage)
+- Use strong, modern encryption algorithms
+
+### Regular Updates
+- Keep all dependencies and frameworks updated
+- Apply security patches promptly
+- Monitor for new vulnerabilities in used components
+
+### Security Testing
+- Include security testing in your development process
+- Perform regular penetration testing and code reviews
+- Use automated security scanning tools
+
+### Incident Response Planning
+- Have a plan for when security incidents occur
+- Practice incident response procedures
+- Maintain incident response documentation and contacts
+
+## Context-Specific Guidance
+
+### Mobile Applications
+- Apply both security-api.mdc (for backend APIs) and security-web.mdc (for WebView components)
+- Add mobile-specific considerations like app signing, root detection, certificate pinning
+
+### Cloud-Native Applications
+- Focus on security-api.mdc, security-dependencies.mdc, and security-monitoring.mdc
+- Consider container security, service mesh policies, and cloud provider security features
+
+### Legacy System Integration
+- Emphasize security-data-protection.mdc and security-input-validation.mdc
+- Consider additional validation and sanitization layers
+- Implement security proxies or gateways where direct modifications aren't possible
+
+### High-Security Environments
+- Apply ALL security files rigorously
+- Implement additional controls like network segmentation, hardware security modules
+- Consider compliance requirements (SOC 2, PCI DSS, FedRAMP, etc.)

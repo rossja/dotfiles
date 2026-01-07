@@ -1,0 +1,41 @@
+# Dependency & Code Security
+
+## Dependency Management
+
+- **Dependency scanning**: Regularly scan for known vulnerabilities
+- **Version pinning**: Pin dependency versions to avoid supply chain attacks
+- **Minimal dependencies**: Only include necessary dependencies
+- **Trusted sources**: Download dependencies from official, trusted repositories
+- **License compliance**: Ensure dependency licenses are compatible
+
+## Secure Coding Practices
+
+- **Code review**: Implement mandatory peer code reviews for security
+- **Static analysis**: Use SAST tools to identify potential vulnerabilities
+- **Avoid dangerous functions**: Avoid eval(), exec(), deserialization of untrusted data
+- **Memory safety**: Use memory-safe languages or safe practices in unsafe languages
+- **Integer overflow protection**: Check for arithmetic overflow conditions
+
+## Software Composition Analysis
+
+- **SBOM generation**: Maintain software bill of materials
+- **Vulnerability databases**: Regular checks against CVE databases
+- **Update policies**: Establish policies for updating vulnerable dependencies
+- **Alternative assessment**: Evaluate alternative dependencies when vulnerabilities exist
+- **Dependency tree analysis**: Understand transitive dependencies and their risks
+
+## Build & Deployment Security
+
+- **Secure build pipeline**: Protect build processes from tampering
+- **Code signing**: Sign releases to ensure integrity
+- **Container security**: Scan container images for vulnerabilities
+- **Infrastructure as code**: Secure configuration management
+- **Deployment verification**: Verify deployed code matches intended release
+
+## Development Environment Security
+
+- **Developer workstation security**: Secure development environments
+- **IDE security**: Keep development tools updated and properly configured
+- **Source code protection**: Secure access to source code repositories
+- **Secrets in development**: Avoid committing secrets to version control
+- **Development data**: Use anonymized data in development environments

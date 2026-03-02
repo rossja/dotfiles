@@ -1,0 +1,33 @@
+# Logging Security
+
+## Logging Best Practices
+
+- **Security event logging**: Log authentication, authorization, and access events
+- **No sensitive data**: Never log passwords, tokens, PII, or other sensitive data
+- **Structured logging**: Use consistent, machine-readable log formats
+- **Log sanitization**: Remove or mask sensitive information from logs
+- **Contextual logging**: Include relevant context without exposing sensitive details
+
+## Log Content Security
+
+- **Data classification in logs**: Classify log data based on sensitivity
+- **Log data minimization**: Only log necessary information for security and debugging
+- **Personal data protection**: Comply with privacy regulations in logging
+- **Tokenization in logs**: Use tokens instead of actual sensitive values
+- **Log correlation**: Include correlation IDs for tracking without exposing user data
+
+## Log Storage & Management
+
+- **Log rotation**: Implement log rotation and retention policies
+- **Log integrity**: Protect logs from tampering with checksums/signatures
+- **Centralized logging**: Aggregate logs from all system components
+- **Log encryption**: Encrypt logs containing sensitive information
+- **Access controls**: Restrict access to logs based on need-to-know
+
+## Log Analysis & Retention
+
+- **Log analysis tools**: Implement tools for log searching and analysis
+- **Retention policies**: Define how long different types of logs are kept
+- **Log archival**: Secure long-term storage of important logs
+- **Log disposal**: Secure deletion of logs after retention period
+- **Backup and recovery**: Ensure logs are backed up and recoverable

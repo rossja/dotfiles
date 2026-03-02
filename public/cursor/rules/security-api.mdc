@@ -1,0 +1,49 @@
+# API Security Guidelines
+
+## API Design Security
+
+- **REST API versioning**: Implement secure versioning strategies (URL path, headers)
+- **GraphQL security**: Query depth limiting, cost analysis, introspection disabling
+- **API gateway integration**: Centralized security, rate limiting, authentication
+- **OpenAPI security documentation**: Properly document authentication and authorization schemes
+- **API discovery prevention**: Prevent unauthorized enumeration of endpoints
+
+## API Authentication & Authorization
+
+- **Bearer token authentication**: JWT, OAuth 2.0 access tokens for API access
+- **API key management**: Secure generation, distribution, rotation, and revocation
+- **Client credentials flow**: Machine-to-machine authentication for service APIs
+- **Scope-based authorization**: Implement granular permission scopes per API endpoint
+- **Multi-tenant API security**: Proper tenant isolation and data segregation
+
+## API Request/Response Handling
+
+- **Content-Type validation**: Strict validation of request content types
+- **API payload size limits**: Protect against large payload attacks
+- **Response filtering**: Filter sensitive data from API responses based on client permissions
+- **Null handling**: Secure handling of null values in API responses
+- **Consistent error responses**: Standardized error format without information leakage
+
+## API Rate Limiting & Abuse Prevention
+
+- **Endpoint-specific rate limits**: Different limits per API endpoint based on resource cost
+- **User/client-based rate limiting**: Per-user or per-API-key rate limiting
+- **Burst protection**: Handle traffic spikes without affecting legitimate users
+- **Quota management**: Long-term usage quotas for API consumers
+- **DDoS protection**: API-specific distributed denial of service protection
+
+## API Monitoring & Analytics
+
+- **API usage tracking**: Monitor usage patterns, popular endpoints, error rates
+- **Security event correlation**: Link API security events across endpoints
+- **Performance monitoring**: Track API response times and availability
+- **Anomaly detection**: Identify unusual API usage patterns or attacks
+- **Business logic monitoring**: Track business-critical API flows
+
+## API Documentation & Developer Experience
+
+- **Security scheme documentation**: Clear authentication and authorization examples
+- **Rate limit documentation**: Document limits, quotas, and error responses
+- **Sandbox environments**: Provide secure testing environments for developers
+- **SDK security**: Secure official SDKs and client libraries
+- **Change management**: Secure handling of API changes and deprecation

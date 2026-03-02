@@ -1,0 +1,41 @@
+# Data Protection & Encryption Security
+
+## Encryption Standards
+
+- **Use strong encryption**: AES-256 for symmetric, RSA-2048+ or ECC for asymmetric
+- **Encrypt data at rest**: Protect stored sensitive data with encryption
+- **Encrypt data in transit**: Use TLS 1.2+ for all network communications
+- **Key management**: Use secure key storage and rotation policies
+- **Initialization vectors**: Use unique, random IVs for each encryption operation
+
+## Sensitive Data Handling
+
+- **Data classification**: Identify and classify sensitive data types
+- **Data minimization**: Only collect and store necessary data
+- **Secure deletion**: Properly wipe sensitive data when no longer needed
+- **PII protection**: Special handling for personally identifiable information
+- **Payment data security**: Follow PCI DSS for payment card information
+
+## Communication Security
+
+- **HTTPS everywhere**: Never transmit sensitive data over HTTP
+- **Certificate validation**: Properly validate SSL/TLS certificates
+- **Perfect forward secrecy**: Use ephemeral key exchange when possible
+- **HSTS headers**: Implement HTTP Strict Transport Security
+- **Certificate pinning**: Pin certificates for critical communications
+
+## Database Security
+
+- **Transparent data encryption**: Use database-level encryption for sensitive tables
+- **Column-level encryption**: Encrypt specific sensitive fields
+- **Backup encryption**: Ensure database backups are encrypted
+- **Connection encryption**: Use encrypted database connections
+- **Database access logs**: Monitor and log database access patterns
+
+## Key Management
+
+- **Hardware security modules**: Use HSMs for critical key storage
+- **Key rotation**: Implement regular key rotation schedules
+- **Key escrow**: Establish secure key recovery procedures
+- **Access control**: Restrict key access to authorized personnel/systems
+- **Key lifecycle management**: Define key generation, distribution, and destruction processes

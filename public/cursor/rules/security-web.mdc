@@ -1,0 +1,59 @@
+# Web Application Security
+
+## Cross-Site Scripting (XSS) Prevention
+
+- **HTML output encoding**: Encode all dynamic content in HTML context
+- **JavaScript context escaping**: Proper escaping for JavaScript variables and strings
+- **CSS context protection**: Sanitize dynamic content in CSS contexts
+- **URL context encoding**: Encode user data used in URLs and href attributes
+- **Content Security Policy**: Implement strict CSP to prevent script injection
+- **DOM-based XSS prevention**: Use safe DOM manipulation APIs and avoid innerHTML
+
+## Cross-Site Request Forgery (CSRF) Protection
+
+- **Synchronizer token pattern**: Implement anti-CSRF tokens for state-changing forms
+- **Double submit cookies**: CSRF protection using cookie-header validation
+- **SameSite cookie attribute**: Use SameSite=Strict or Lax for session cookies
+- **Origin/Referrer validation**: Verify request origin for sensitive operations
+- **Custom headers for AJAX**: Require custom headers for AJAX requests
+
+## Browser Security Headers
+
+- **X-Frame-Options**: Prevent clickjacking with DENY or SAMEORIGIN
+- **X-Content-Type-Options**: Prevent MIME sniffing with nosniff
+- **X-XSS-Protection**: Enable browser XSS filtering (legacy support)
+- **Strict-Transport-Security (HSTS)**: Enforce HTTPS connections
+- **Referrer-Policy**: Control referrer information disclosure
+- **Permissions-Policy**: Control access to browser features
+
+## Web Form Security
+
+- **Server-side validation**: Always validate form data on the server
+- **Hidden field protection**: Never rely on hidden fields for security decisions
+- **File upload validation**: Strict file type, size, and content validation
+- **Form rate limiting**: Prevent automated form submissions and abuse
+- **Auto-complete handling**: Control sensitive field auto-completion
+
+## Client-Side Security
+
+- **Subresource Integrity (SRI)**: Verify integrity of external scripts and stylesheets
+- **Trusted Types**: Implement Trusted Types API for DOM XSS prevention
+- **Secure client-side storage**: Proper use of localStorage, sessionStorage
+- **PostMessage security**: Validate origins in cross-frame communication
+- **Web Workers security**: Secure implementation of Web Workers
+
+## Session Management for Web Apps
+
+- **Session cookie security**: HttpOnly, Secure, SameSite attributes
+- **Session fixation prevention**: Regenerate session ID after authentication
+- **Session timeout**: Implement appropriate idle and absolute timeouts
+- **Concurrent session handling**: Manage multiple sessions per user
+- **Secure logout**: Proper session invalidation on logout
+
+## Progressive Web App (PWA) Security
+
+- **Service Worker security**: Secure implementation and update mechanisms
+- **Manifest file security**: Validate and secure web app manifest
+- **Offline functionality**: Secure handling of cached data and offline operations
+- **Update mechanisms**: Secure application update and cache invalidation
+- **Push notification security**: Secure implementation of push notifications

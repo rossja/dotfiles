@@ -1,0 +1,34 @@
+# Input Validation & Sanitization Security
+
+## Input Validation Rules
+
+- **Validate all inputs**: Check every parameter, header, and body content
+- **Type validation**: Ensure data matches expected types (string, number, boolean, etc.)
+- **Length validation**: Set minimum and maximum length constraints
+- **Format validation**: Use regex, schemas, or format validators
+- **Range validation**: Check numeric values are within acceptable ranges
+- **Whitelist validation**: Prefer allow-lists over deny-lists when possible
+
+## Sanitization Practices
+
+- **Context-aware sanitization**: Sanitize based on output context (HTML, SQL, OS commands)
+- **HTML encoding**: Encode output to prevent XSS attacks
+- **SQL parameterization**: Use prepared statements and parameterized queries
+- **Command injection prevention**: Avoid dynamic command construction
+- **Path traversal protection**: Validate and normalize file paths
+
+## File Upload Security
+
+- **File type validation**: Check MIME types and file extensions
+- **File size limits**: Implement reasonable upload size restrictions
+- **Malware scanning**: Scan uploaded files for malicious content
+- **Secure file storage**: Store uploads outside web-accessible directories
+- **File name sanitization**: Remove or encode special characters in filenames
+
+## Data Processing
+
+- **JSON/XML parsing**: Use secure parsers with entity expansion limits
+- **Deserialization safety**: Avoid deserializing untrusted data
+- **Regular expression safety**: Prevent ReDoS attacks with pattern limits
+- **URL validation**: Validate and sanitize URLs before processing
+- **Encoding consistency**: Maintain consistent character encoding throughout

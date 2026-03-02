@@ -1,0 +1,47 @@
+# ghostty config file
+# Linux: ~/.config/ghostty/config
+# macOS: ~/.config/ghostty/config or ~/Library/Application Support/com.mitchellh.ghostty/config
+# ------------------------
+# color definitions
+# yellow = "#FDC968"
+# dark purple = "#2B1F32"
+# pink = "#F4B5A8"
+# white = "#FFFFFF"
+# cyan = "#38E3DE"
+# white-blue = "#ABC4CC"
+# ------------------------
+
+# fonts
+font-size = 16
+font-thicken = true
+
+# themes
+#theme = Ghostty Default Style Dark
+#theme = Nightfox
+#theme = Operator Mono Dark
+#theme = Rapture
+#theme = Relaxed
+#theme = Rose Pine Moon
+#theme = Snazzy Soft
+#theme = Solarized Dark Higher Contrast
+#theme = Sonokai
+#theme = Spacegray Bright
+#theme = TokyoNight Day
+#theme = Tomorrow
+#theme = Tomorrow Night
+theme = Wild Cherry
+
+# selection colors
+selection-background = "#38E3DE"
+selection-foreground = "#2B1F32"
+
+# background opacity
+#background-opacity = 0.9
+#background-blur = true
+
+# keybindings
+keybind = super+left=previous_tab
+keybind = super+right=next_tab
+
+# set ssh env term properly
+shell-integration-features = ssh-env

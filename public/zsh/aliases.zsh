@@ -35,9 +35,9 @@ alias grepc="grep --color=always"
 # -------------------------------------------------
 # handy for getting to the dotfiles dirs quickly
 # -------------------------------------------------
-alias cdot="cd $HOME/Documents/dotfiles"
-alias pubdot="cd $HOME/Documents/dotfiles/public"
-alias privdot="cd $HOME/Documents/dotfiles/private"
+alias cdot="cd $HOME/src/dotfiles"
+alias pubdot="cd $HOME/src/dotfiles/public"
+alias privdot="cd $HOME/src/dotfiles/private"
 
 # -------------------------------------------------
 # git fun
@@ -85,3 +85,5 @@ alias keeper='echo $(history -p !!) >>~/.keeper.txt'
 
 # ag with ignore
 alias agi='ag --ignore test --ignore node_modules --ignore lib --ignore test --ignore shared-labels-std --ignore shared-labels --ignore tests --ignore __tests__ --ignore mocks'
+
+alias venvreset='deactivate; unset VIRTUAL_ENV; source .venv/bin/activate && uv sync; . ~/.zshrc'

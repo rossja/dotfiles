@@ -352,6 +352,7 @@ fi
 [[ -f ${HOME}/.aliases.zsh.priv ]] && . ${HOME}/.aliases.zsh.priv
 
 # make sure my own bin is in the path first
+[[ -d "${HOME}/bin" ]] && export PATH="${HOME}/bin:${PATH}"
 [[ -d "${HOME}/src/bin" ]] && export PATH="${HOME}/src/bin:${PATH}"
 [[ -d "${HOME}/src/dotfiles/public/bin" ]] && export PATH="${HOME}/src/dotfiles/public/bin:${PATH}"
 [[ -d "${HOME}/src/dotfiles/private/bin" ]] && export PATH="${HOME}/src/dotfiles/private/bin:${PATH}"

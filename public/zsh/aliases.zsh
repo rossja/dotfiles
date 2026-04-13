@@ -72,6 +72,7 @@ alias histrim="history | cut -c 26-"
 
 # a fun way to make random passwords
 alias randpw="openssl rand 60 | openssl base64 -A"
+alias pwgen="< /dev/urandom LC_ALL=C tr -dc '[:alnum:]' | head -c32; echo"
 
 # google cloud stuff
 alias gcpls='gcloud compute instances list | grep ${1}'
@@ -84,6 +85,7 @@ alias keyscan="for key in ${KEYSREGEX}; do echo -e \"\${key}\"; ssh-keygen -l -f
 alias keeper='echo $(history -p !!) >>~/.keeper.txt'
 
 # ag with ignore
-alias agi='ag --ignore test --ignore node_modules --ignore lib --ignore test --ignore shared-labels-std --ignore shared-labels --ignore tests --ignore __tests__ --ignore mocks'
+[[ -x $(which ag) ]] && alias agi='ag --ignore test --ignore node_modules --ignore lib --ignore test --ignore shared-labels-std --ignore shared-labels --ignore tests --ignore __tests__ --ignore mocks'
 
-alias venvreset='deactivate; unset VIRTUAL_ENV; source .venv/bin/activate && uv sync; . ~/.zshrc'
+# reset the venv
+alias vnvrst='deactivate; unset VIRTUAL_ENV; source .venv/bin/activate && uv sync; . ~/.zshrc'

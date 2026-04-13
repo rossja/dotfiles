@@ -1,11 +1,14 @@
-[[ -f ${HOME}/.bootstrap_rc ]] && source ${HOME}/.bootstrap_rc
+# disable instant prompt
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-## Enable Powerlevel10k instant prompt. Should stay close to the top of ${HOME}/.zshrc.
-## Initialization code that may require console input (password prompts, [y/n]
-## confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
+[[ -f ${HOME}/.bootstrap_rc ]] && source ${HOME}/.bootstrap_rc
 
 # enable this to debug performance
 # zmodload zsh/zprof
@@ -356,3 +359,6 @@ fi
 [[ -d "${HOME}/src/bin" ]] && export PATH="${HOME}/src/bin:${PATH}"
 [[ -d "${HOME}/src/dotfiles/public/bin" ]] && export PATH="${HOME}/src/dotfiles/public/bin:${PATH}"
 [[ -d "${HOME}/src/dotfiles/private/bin" ]] && export PATH="${HOME}/src/dotfiles/private/bin:${PATH}"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
